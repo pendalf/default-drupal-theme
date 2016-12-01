@@ -1,0 +1,141 @@
+
+form {
+
+  .form {
+
+    &-text { border: 0; padding: 10*$crn 30*$crn; height: 50*$crn; width: 231*$crn; border: 1px solid $bordersColor; font-size: $fs14;
+
+      @extend %bdr-3;
+      @extend %border-box;
+      @extend %transition;
+
+      &:hover { border-color: #84a5ea;}
+      &:focus { border-color: #84a5ea;
+
+        @include box-shadow(0 0 7px #84a5ea);
+      }
+
+      &.error { border-color: $borderRed;}
+    }
+    &-submit { height: 50*$crn; cursor: pointer;
+
+      @extend %button;
+    }
+    &-item, 
+    &-actions {  margin: 12*$crn 0;}
+  }
+  .webform-component-managed_file {
+
+    .form-submit { font-size: $fs12;
+
+      @extend %button--file;
+    }
+  }
+  .row__item {
+
+    .form-text { width: 100%;}
+    .required { position: relative;
+
+      & > span:first-child { height: 5*$crn; width: 5*$crn;
+
+        &:before { content: ""; background: $borderRed; height: 4*$crn; position: absolute; right: 9*$crn; top: 9*$crn; width: 4*$crn; z-index: 3;
+          
+          @extend %bdr-50p;
+        }
+      }
+      &.has-error {
+
+      }
+    }
+
+  }
+}
+
+
+.forms_css .select { width: 100%; display: inline-block; vertical-align: middle; position: relative; word-spacing: normal; font-weight: normal; font-size: $fs14;
+
+  .checked_option_wrap { display: block; position: relative; overflow: hidden; border-color: $bordersColor; height: 48*$crn;}
+
+  .checked_option { display: block; border: 0; padding: 0 20*$crn; line-height: $fs48;
+
+    @extend %transition;
+
+    &:before { content: none;}
+    &:after { content: ""; border-style: solid; border-width: 5px 6px 0 6px; border-color: #3e3e3e transparent transparent;  position: absolute; right: 23*$crn; top: 50%; margin-top: -3*$crn; cursor: pointer;
+
+  		@extend %transition;
+      @extend %rotate-0;
+  	}
+  	&:hover { background: #f8f8f8;
+
+  		&:before { background-color: #026837}
+  		&:after {
+
+        @extend %opacity-1;
+      }
+  	}
+  }
+  .items { width: 100%; background: #fff; position: relative; border: 1px solid #84a5ea; margin-top: 7px; color: #202020; padding: 18*$crn 0 19*$crn;
+
+    @include box-shadow(0 0 7px #84a5ea);
+  }
+  .items_inner { overflow: hidden; padding: 0 !important; border: 0;
+
+  	@extend %bdr-4;
+  	@extend %border-box;
+  }
+  .option { display: block; cursor: pointer; font-size: $fs16; padding: 3*$crn 36*$crn 2*$crn 36*$crn;
+
+  	@extend %transition;
+
+    &:hover { color: $borderBlue; background: none;}
+  }
+  //&:hover,
+  &_opened {
+
+  	.checked_option { background: #f8f8f8;
+
+      @include box-shadow(inset 0 7px 7px #e5e5e5);
+
+  		//&:after { border-color: $bordersColor transparent transparent;}
+  	}
+  }
+  .jspVerticalBar { right: 28*$crn;}
+}
+
+.radio,
+.checkbox { display: inline-block; width: 24*$crn; height: 24*$crn; border: 1px solid $bordersColor; vertical-align: middle; margin-top: -2*$crn; margin-right: 5*$crn; position: relative; background: #fff;
+
+	@extend %border-box;
+  @extend %transition;
+	@extend %bdr-2;
+
+  &:hover { border-color: #84a5ea;}
+}
+.check_radio,
+.check_checkbox { border-color: #84a5ea;
+
+  @include box-shadow(0 0 7px #84a5ea);
+
+	&:after { content: ""; position: absolute; top: 50%; left: 50%; width: 10*$crn; height: 10*$crn; background: $mainLinkColor; margin: -5*$crn 0 0 -5*$crn;}
+}
+.radio,
+.check_radio:after {
+
+	@extend %bdr-50p;
+}
+
+
+.jspContainer { position:relative; overflow:hidden; display: block !important; max-width: 100%;}
+.jspTrack { width: 1px; background: $bordersColor;}
+.jspPane { position:relative; padding: 0 !important; min-width: 100%;
+
+  @extend %border-box;
+}
+.jspVerticalBar { position:absolute; top:0; right: 4*$crn}
+.jspDrag { background: $bordersColor; width: 7*$crn; cursor:pointer; position:relative; margin-left: -3*$crn;
+
+  @extend %bdr-3;
+
+}
+.jspPane { margin-left:0 !important}

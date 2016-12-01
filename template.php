@@ -1,0 +1,483 @@
+<?php
+
+
+require_once "includes/_functions.php";
+
+/**
+ * Add body classes if certain regions have content.
+ */
+function default_drupal_theme_preprocess_html(&$vars) {
+  if (!empty($vars['page']['featured'])) {
+    $vars['classes_array'][] = 'featured';
+  }
+
+  if (!empty($vars['page']['triptych_first'])
+    || !empty($vars['page']['triptych_middle'])
+    || !empty($vars['page']['triptych_last'])) {
+    $vars['classes_array'][] = 'triptych';
+  }
+
+  if (!empty($vars['page']['footer_firstcolumn'])
+    || !empty($vars['page']['footer_secondcolumn'])
+    || !empty($vars['page']['footer_thirdcolumn'])
+    || !empty($vars['page']['footer_fourthcolumn'])) {
+    $vars['classes_array'][] = 'footer-columns';
+  }
+
+  $vars['classes_array'][] = 'body_bgr forms_css';
+}
+
+/**
+ * Override or insert variables into the page template for HTML output.
+ */
+function default_drupal_theme_process_html(&$vars) {
+  // Hook into color.module.
+  if (module_exists('color')) {
+    _color_html_alter($vars);
+  }
+}
+
+/**
+ * Override or insert variables into the page template.
+ */
+function default_drupal_theme_process_page(&$vars) {
+  // Hook into color.module.
+  if (module_exists('color')) {
+    _color_page_alter($vars);
+  }
+  // Always print the site name and slogan, but if they are toggled off, we'll
+  // just hide them visually.
+  $vars['hide_site_name']   = theme_get_setting('toggle_name') ? FALSE : TRUE;
+  $vars['hide_site_slogan'] = theme_get_setting('toggle_slogan') ? FALSE : TRUE;
+  if ($vars['hide_site_name']) {
+    // If toggle_name is FALSE, the site_name will be empty, so we rebuild it.
+    $vars['site_name'] = filter_xss_admin(variable_get('site_name', 'Drupal'));
+  }
+  if ($vars['hide_site_slogan']) {
+    // If toggle_site_slogan is FALSE, the site_slogan will be empty, so we rebuild it.
+    $vars['site_slogan'] = filter_xss_admin(variable_get('site_slogan', ''));
+  }
+  // Since the title and the shortcut link are both block level elements,
+  // positioning them next to each other is much simpler with a wrapper div.
+  if (!empty($vars['title_suffix']['add_or_remove_shortcut']) && $vars['title']) {
+    // Add a wrapper div using the title_prefix and title_suffix render elements.
+    $vars['title_prefix']['shortcut_wrapper'] = array(
+      '#markup' => '<div class="shortcut-wrapper clearfix">',
+      '#weight' => 100,
+    );
+    $vars['title_suffix']['shortcut_wrapper'] = array(
+      '#markup' => '</div>',
+      '#weight' => -99,
+    );
+    // Make sure the shortcut link is the first item in title_suffix.
+    $vars['title_suffix']['add_or_remove_shortcut']['#weight'] = -100;
+  }
+
+  //Front page
+  // $vars['front_page'] = _default_drupal_theme_front_page();
+
+  // $vars['main_class'] = '';
+
+  // $nodeTypeArray = array('region');
+  // if (
+  //   $vars['is_front'] 
+  //   || isset($vars['node']) 
+  //   && in_array($vars['node']->type, $nodeTypeArray)
+  // ) {
+  //   $vars['breadcrumb'] = '';
+  //   $vars['title'] = '';
+  // }
+
+  //print_r($vars['theme_hook_suggestions']);
+
+
+  // $termArray = array('page__membership');
+
+  // foreach ($termArray as $value) {
+
+  //   if (in_array($value, $vars['theme_hook_suggestions'])) {
+
+  //     $vars['title'] = '';
+  //   }
+  // }
+
+  
+
+  //print_r($vars);
+
+}
+
+/**
+ * Implements hook_preprocess_maintenance_page().
+ */
+function default_drupal_theme_preprocess_maintenance_page(&$vars) {
+  // By default, site_name is set to Drupal if no db connection is available
+  // or during site installation. Setting site_name to an empty string makes
+  // the site and update pages look cleaner.
+  // @see template_preprocess_maintenance_page
+  if (!$vars['db_is_active']) {
+    $vars['site_name'] = '';
+  }
+  drupal_add_css(drupal_get_path('theme', 'default_drupal_theme') . '/css/maintenance-page.css');
+}
+
+/**
+ * Override or insert variables into the maintenance page template.
+ */
+function default_drupal_theme_process_maintenance_page(&$vars) {
+  // Always print the site name and slogan, but if they are toggled off, we'll
+  // just hide them visually.
+  $vars['hide_site_name']   = theme_get_setting('toggle_name') ? FALSE : TRUE;
+  $vars['hide_site_slogan'] = theme_get_setting('toggle_slogan') ? FALSE : TRUE;
+  if ($vars['hide_site_name']) {
+    // If toggle_name is FALSE, the site_name will be empty, so we rebuild it.
+    $vars['site_name'] = filter_xss_admin(variable_get('site_name', 'Drupal'));
+  }
+  if ($vars['hide_site_slogan']) {
+    // If toggle_site_slogan is FALSE, the site_slogan will be empty, so we rebuild it.
+    $vars['site_slogan'] = filter_xss_admin(variable_get('site_slogan', ''));
+  }
+}
+
+/**
+ * Override or insert variables into the node template.
+ */
+function default_drupal_theme_preprocess_node(&$vars) {
+
+  $node = $vars['node'];
+
+  // if ($vars['view_mode'] == 'full') {
+
+  //   if (node_is_page($vars['node'])) {
+
+  //     $vars['classes_array'][] = 'node-full';
+  //   } 
+  //   if ($vars['node']->nid == 66) {
+
+  //     $vars['classes_array'][] = 'calculator';
+  //   }
+  //   if ($vars['node']->type == 'region') {
+      
+  //     $vars['content']['field_region_image'][0]['#image_style'] = 'v3_region_main_head';
+      
+  //     //print_r($vars);
+  //   } 
+  // }
+
+
+  //print_r($vars['content']);
+
+  // if (isset($vars['content']['field_image'][0]['#image_style'])) {
+
+  //   $vars['content']['field_image'][0]['#image_style'] = 'big_pic_mobile';
+  // }
+
+  // if ($vars['view_mode'] == 'teaser') {
+  //   $vars['title_attributes_array']['class'] = 'node__title';
+  // }
+
+  // $vars['socials_share'] = '';
+  // //print '<!-- '; print_r($vars); print ' -->';
+  // if ($vars['page']) {
+    
+  //   $vars['socials_share'] = _addSocialsShares($node);
+  // }
+
+  //print_r($vars);
+
+  // if (isset($node->field_image_list)) {
+    
+  //   // $vars['field_image_list'][0]['test'] = 'test';
+  //   // $vars['elements']['#node']->field_image_list['und'][0]['3test'] = '3test';
+  //   // $node->field_image_list['und'][0]['test'] = 'test';
+  //   // $node->field_image_list['und']['test1'] = 'test1';
+  // }
+
+
+}
+
+function default_drupal_theme_process_node(&$vars) {
+
+  //print_r($vars);
+}
+
+/**
+ * Override or insert variables into the block template.
+ */
+function default_drupal_theme_preprocess_block(&$vars) {
+  // In the header region visually hide block titles.
+  if ($vars['block']->region == 'header') {
+    $vars['title_attributes_array']['class'][] = 'element-invisible';
+  }
+  if ($vars['block']->region == 'drop_menu') {
+    $vars['classes_array'][] = 'slidebar__item';
+  }
+
+  switch ($vars['block_html_id']) {
+
+    // case 'block-search-form':
+    //   $vars['classes_array'][] = 'default-view-search';
+    //   break;
+
+    default:
+      # code...
+      break;
+  }
+}
+
+/**
+ * Implements theme_menu_tree().
+ */
+function default_drupal_theme_menu_tree($vars) {
+  return '<ul class="menu clearfix">' . $vars['tree'] . '</ul>';
+}
+
+/**
+ * Implements theme_field__field_type().
+ */
+function default_drupal_theme_field__taxonomy_term_reference($vars) {
+  $output = '';
+
+  // Render the label, if it's not hidden.
+  if (!$vars['label_hidden']) {
+    $output .= '<h3 class="field-label">' . $vars['label'] . ': </h3>';
+  }
+
+  // Render the items.
+  $output .= ($vars['element']['#label_display'] == 'inline') ? '<ul class="links inline">' : '<ul class="links">';
+  foreach ($vars['items'] as $delta => $item) {
+    $output .= '<li class="taxonomy-term-reference-' . $delta . '"' . $vars['item_attributes'][$delta] . '>' . drupal_render($item) . '</li>';
+  }
+  $output .= '</ul>';
+
+  // Render the top-level DIV.
+  $output = '<div class="' . $vars['classes'] . (!in_array('clearfix', $vars['classes_array']) ? ' clearfix' : '') . '"' . $vars['attributes'] .'>' . $output . '</div>';
+
+  return $output;
+}
+
+
+/**
+ * Preprocess the primary theme implementation for a view.
+ */
+
+function default_drupal_theme_preprocess_views_view(&$vars) {
+
+  $modify = array(
+    // '3v_front_main_news' => array(
+    //   'display_id' => array(
+    //     // 'block' => array(
+    //     //   'extra_class' => 'sections-block',
+    //     // ),
+    //     'block_1' => array(
+    //       'extra_class' => 'big-gallery'
+    //     ),
+    //     'block_2' => array(
+    //       'extra_class' => 'block-plates',
+    //       'row_prefix'  => '<div class="row">',
+    //       'row_suffix'  => '</div>'
+    //     ),
+    //     'block_3' => array(
+    //       'extra_class' => 'block-plates',
+    //       'row_prefix'  => '<div class="row">',
+    //       'row_suffix'  => '</div>'
+    //     ),
+    //   ),
+    // ),
+    
+
+    // 'video_page_list' => array(
+    //   'display_id' => 'page_1',
+    //   'extra_class' => 'previews_page',
+    // ),
+  );
+
+  $name = $vars['name'];
+  $display_id = $vars['display_id'];
+
+  if (in_array($name, array_keys($modify))) {
+      // foreach ($vars as $key => $value) {
+      //   print '<!-- ';print $key;print ' -->' . "\n";
+      // }
+    //print_r($vars['rows']);
+    if (is_array($modify[$name]['display_id']) && in_array($display_id, array_keys($modify[$name]['display_id']))) {
+
+      $vars['classes_array'][] = $modify[$name]['display_id'][$display_id]['extra_class'];
+      //print_r($display_id);
+
+    }
+    elseif ($vars['display_id'] == $modify[$name]['display_id']) {
+      $vars['classes_array'][] = $modify[$name]['extra_class'];
+    }
+
+    if (isset($modify[$name]['display_id'][$display_id]['row_prefix'])) {
+
+      //print_r($modify[$name]['display_id'][$display_id]);
+      $vars['rows'] = $modify[$name]['display_id'][$display_id]['row_prefix'] . $vars['rows'];
+    }
+    if (isset($modify[$name]['display_id'][$display_id]['row_suffix'])) {
+      
+      $vars['rows'] .= $modify[$name]['display_id'][$display_id]['row_suffix'];
+    }
+    //$vars['rows'] = $modify[$name]['display_id'][$display_id]['extra_class'] . $vars['rows'] . '</div>';
+    // print_r($vars['rows']);
+    
+  }
+}
+
+function default_drupal_theme_preprocess_views_view_unformatted(&$vars) {
+  $view    = $vars['view'];
+  $name    = $view->name;
+  $display = $view->current_display;
+  $rows    = $vars['rows'];
+  $style   = $view->style_plugin;
+  $options = $style->options;
+
+  $row_extra_classes = array(
+
+    // '3v_front_main_news' => array(
+
+    //   'block_2' => array('row__item', 'row__width-4', 'row__md-width-6', 'row__mb-width-12'),
+    //   'block_3' => array('row__item', 'row__width-4', 'row__md-width-6', 'row__mb-width-12')
+    // ),
+  );
+
+  $vars['classes_array'] = array();
+  $vars['classes'] = array();
+  $default_row_class = isset($options['default_row_class']) ? $options['default_row_class'] : FALSE;
+  $row_class_special = isset($options['row_class_special']) ? $options['row_class_special'] : FALSE;
+  // Set up striping values.
+  $count = 0;
+  $max = count($rows);
+  foreach ($rows as $id => $row) {
+    $count++;
+    if ($default_row_class) {
+      $vars['classes'][$id][] = 'views-row';
+      $vars['classes'][$id][] = 'views-row-' . $count;
+    }
+    if ($row_class_special) {
+      $vars['classes'][$id][] = 'views-row-' . ($count % 2 ? 'odd' : 'even');
+      if ($count == 1) {
+        $vars['classes'][$id][] = 'views-row-first';
+      }
+      if ($count == $max) {
+        $vars['classes'][$id][] = 'views-row-last';
+      }
+    }
+
+    if ($row_class = $view->style_plugin->get_row_class($id)) {
+      $vars['classes'][$id][] = $row_class;
+    }
+
+    // Flatten the classes to a string for each row for the template file.
+    $vars['classes_array'][$id] = isset($vars['classes'][$id]) ? implode(' ', $vars['classes'][$id]) : '';
+
+    if (in_array($name, array_keys($row_extra_classes)) && in_array($display, array_keys($row_extra_classes[$name]))) {
+
+      $vars['classes_array'][$id] .= ' ' . implode(' ', $row_extra_classes[$name][$display]);
+    }
+  }
+  //print '<!-- '; print $display; print ' -->' . "\n";
+  //foreach ($vars as $key => $value) {
+      //   print '<!-- ';print $key;print ' -->' . "\n";
+      // }
+}
+
+
+function default_drupal_theme_form_alter(&$form, $form_state, $form_id) {
+
+  switch ($form_id) {
+
+    case 'search_block_form':
+
+      $form['search_block_form']['#attributes']['placeholder'] = t('Site search');
+      //print_r($form);
+
+      break;
+
+    // case 'simplenews_block_form_7901':
+
+    //   //$form['search_block_form']['#attributes']['placeholder'] = t('Site search');
+    //   //print_r($form);
+    //   $form['mail']['#weight'] = -100;
+    //   $form['action']['#weight'] = -99;
+
+    //   break;
+
+    /**
+      *  register form theme
+      *
+      * @author Vladimir Khodakov <akma_2003@mail.ru>
+      */
+
+
+  //   case 'webform_client_form_76556':
+      
+  //     //print '<pre>'; print_r($form_state); print '</pre>';
+  //     $form = _addPlaceholder($form, 'wrap');
+  //     $form['submitted']['region']['#title_display'] = 'wrap';
+  //     //$form['submitted']['region']['#title_display'] = 'wrap';
+  //     foreach ($form['submitted'] as $key => $value) {
+  //       if (is_array($form['submitted'][$key])) {
+  //         //$form[$key]['#no_wrappers'] = true;
+  //         $form['submitted'][$key]['#prefix'] = '<div class="row__item row__width-6 row__md-width-12">';
+  //         $form['submitted'][$key]['#suffix'] = '</div>';
+  //       }
+  //     }
+
+  //     //$form['#prefix'] = '<div class="entitytype-consultation-form"><div class="container">';
+  //     //$form['#suffix'] = '</div></div>';
+
+  //     // foreach ($form as $key => $value) {
+  //     //   if (is_array($form[$key]) && $form[$key]['#type'] == 'container') {
+  //     //     $form[$key]['#no_wrappers'] = true;
+  //     //     $form[$key]['und']['#prefix'] = '';
+  //     //     $form[$key]['und']['#suffix'] = '';
+
+  //     //     if ($form[$key]['und']['#type'] == 'checkbox') {
+  //     //       $form[$key]['und']['#title_display'] = 'after-check';
+  //     //       //print '<!-- '; print_r($form[$key]); print ' -->';
+  //     //     }
+  //     //   }
+  //     // }
+  //     // $form['field_file']['und'][0]['#title_display'] = 'wrap';
+  //     // $form['actions']['submit']['#attributes']['class'][] = 'btn';
+  //     // //$form['actions']['submit']['#value'] = t('Submit');
+  //     // $form['actions']['submit']['#value'] = t('Send');
+      
+  //     // break;
+  // }
+}
+
+
+
+function default_drupal_theme_field($vars) {
+  $output = '';
+
+  // Render the label, if it's not hidden.
+  if (!$vars['label_hidden']) {
+    $output .= '<div class="field-label"' . $vars['title_attributes'] . '>' . $vars['label'] . ':&nbsp;</div>';
+  }
+
+  $field_extra_class = '';
+  $field_items_extra_class = '';
+
+  if ($vars['element']['#field_name'] == 'field_image_list' && $vars['element']['#view_mode'] == 'full') {
+    $field_extra_class = ' row-photo';
+    $field_items_extra_class = ' row-photo__item row-photo__width-2 row-photo__w900-width-3 row-photo__w500-width-4 row-photo__w350-width-6 row-photo__w200-width-12';
+  }
+
+  // Render the items.
+  $output .= '<div class="field-items' .  $field_extra_class .'"' . $vars['content_attributes'] . '>';
+  //print_r($vars);
+  foreach ($vars['items'] as $delta => $item) {
+    $classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even') . $field_items_extra_class;
+    $output .= '<div class="' . $classes . '"' . $vars['item_attributes'][$delta] . '>' . drupal_render($item) . '</div>';
+  }
+  $output .= '</div>';
+
+  // Render the top-level DIV.
+  $output = '<div class="' . $vars['classes'] . '"' . $vars['attributes'] . '>' . $output . '</div>';
+
+  return $output;
+}

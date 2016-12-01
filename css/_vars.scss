@@ -1,0 +1,254 @@
+/* Vars */
+
+$crn: 1rem/16; // main correction value
+// $imgRsp: / 100% auto;
+// $crn: 1px;
+$imgRsp: '';
+
+$mainLinkColor: #2f55a5;
+$mainColor:     #272727;
+$titleColor:    #393939;
+$pinkColor:     #9d1334;
+$blueColor:     #0168aa;
+$yellowColor:   #bc8a03;
+$brownColor:    #1f0c12;
+$borderRed:     #dc2644;
+$borderBlue:    #3055a6;
+$borderGray:    #a8a8a8;
+
+$mainBgColor:   #fafafa;
+$lightBgColor:  #e8e0d6;
+
+
+
+$bordersColor:  #b7b7b7;
+
+$small: 320px;
+$large: 1220px;
+
+$fs1:  1px;
+$fs9:  9*$crn;
+$fs10: 10*$crn;
+$fs11: 11*$crn;
+$fs12: 12*$crn;
+$fs13: 13*$crn;
+$fs14: 14*$crn;
+$fs15: 15*$crn;
+$fs16: 16*$crn;
+$fs17: 17*$crn;
+$fs18: 18*$crn;
+$fs19: 19*$crn;
+$fs20: 20*$crn;
+$fs21: 21*$crn;
+$fs22: 22*$crn;
+$fs23: 23*$crn;
+$fs24: 24*$crn;
+$fs25: 25*$crn;
+$fs26: 26*$crn;
+$fs27: 27*$crn;
+$fs28: 28*$crn;
+$fs29: 29*$crn;
+$fs30: 30*$crn;
+$fs31: 31*$crn;
+$fs32: 32*$crn;
+$fs33: 33*$crn;
+$fs34: 34*$crn;
+$fs35: 35*$crn;
+$fs36: 36*$crn;
+$fs37: 37*$crn;
+$fs38: 38*$crn;
+$fs39: 39*$crn;
+$fs40: 40*$crn;
+$fs41: 41*$crn;
+$fs42: 42*$crn;
+$fs43: 43*$crn;
+$fs44: 44*$crn;
+$fs45: 45*$crn;
+$fs46: 46*$crn;
+$fs47: 47*$crn;
+$fs48: 48*$crn;
+$fs49: 49*$crn;
+$fs50: 50*$crn;
+$fs51: 51*$crn;
+
+$fs75: 75*$crn;
+
+$learnStep: -21*$crn;
+$footerHeight: 480;
+
+$baseWidth: 1200;
+
+
+
+$Playfair: 'Playfair Display', serif;
+$Lato:     'Lato', sans-serif;
+$PTSans:   'Pt Sans', sans-serif;
+$Roboto:       "Roboto", sans-serif;
+$icons:    'Icons';
+
+
+  /* Defaults */
+
+%transition { @include transition-duration(.2s);}
+
+%border-box { @include box-sizing(border-box);}
+
+%content-box { @include box-sizing(content-box);}
+
+%def_ul { padding: 0; margin: 0;}
+%def_ul__li { margin: 0; padding: 0; list-style: none; list-style-image: none;}
+
+%img { max-width: 100%; height: auto; vertical-align: middle;}
+
+%bdr-0 { @include border-radius(0);}
+%bdr-1 { @include border-radius(1*$crn);}
+%bdr-2 { @include border-radius(2*$crn);}
+%bdr-3 { @include border-radius(3*$crn);}
+%bdr-4 { @include border-radius(4*$crn);}
+%bdr-5 { @include border-radius(5*$crn);}
+
+%bdr-50p { @include border-radius(50%);}
+
+%opacity-0 { @include opacity(0);}
+%opacity-50 { @include opacity(.5);}
+%opacity-80 { @include opacity(.8);}
+%opacity-1 { @include opacity(1);}
+
+%td-n { text-decoration: none;
+
+  &:hover { text-decoration: underline;}
+}
+
+%vamb { content: ""; width: 1px; display: inline-block; margin-left: -1px; vertical-align: middle; overflow: hidden;}
+
+%rotate-0 { @include transform(rotate(0deg));}
+%rotate-45 { @include transform(rotate(45deg));}
+%rotate-90 { @include transform(rotate(90deg));}
+%rotate-135 { @include transform(rotate(135deg));}
+%rotate-180 { @include transform(rotate(180deg));}
+%rotate-225 { @include transform(rotate(225deg));}
+%rotate-315 { @include transform(rotate(315deg));}
+
+%clearfix {
+
+  &:after { content: ""; display: block; clear: both; font-size: 0; overflow: hidden;}
+}
+
+%close { position: absolute; width: 34*$crn; height: 34*$crn; cursor: pointer; overflow: hidden; text-indent: -9999px;
+
+  @extend %rotate-45;
+
+  &:before,
+  &:after { content: ""; position: absolute; width: 2px; height: 34*$crn; left: 16*$crn; top: 0; background: #fff;}
+  &:after {
+
+    @extend %rotate-90
+  }
+
+}
+
+%close-popup { position: absolute; width: 36*$crn; height: 36*$crn; cursor: pointer; overflow: hidden; text-indent: -9999px;
+
+  @extend %rotate-45;
+
+  &:after,
+  &:before { content: ""; position: absolute; width: 4*$crn; height: 100%; left: 50%; margin-left: -2*$crn; top: 0; background: $borderRed;}
+
+  &:after {
+
+    @extend %rotate-90;
+  }
+}
+
+%pabs { position: absolute; top: 0; left: 0; right: 0; bottom: 0;}
+
+
+%arr-r { content: ""; border-right: 2px solid #f3f1ee; border-top: 2px solid #f3f1ee; display: inline-block; width: 5/18*1em; height: 5/18*1em; margin: 0 0 1/18*1em 8/18*1em;
+
+  @extend %rotate-45;
+  @extend %transition;
+}
+
+%drop_arrow {
+
+  &:after { content: ""; display: inline-block; vertical-align: middle; width: 0; height: 0; border-style: solid; border-width: 6px 3.5px 0 3.5px; border-color: #fff transparent transparent transparent; margin: -4*$crn 0 0 9*$crn;}
+}
+
+
+%button { font-size: $fs14; line-height: $fs15; display: inline-block; background: transparent; color: $borderRed; padding: 7*$crn 10*$crn 8*$crn; text-transform: uppercase; text-align: center; border: 2px solid $borderRed; font-weight: bold;
+
+  //@include gradient(#ec2027, #d02228);
+  @extend %bdr-2;
+  @extend %transition;
+
+  &:hover { background: $borderRed; color: #fff;
+
+    @extend %opacity-1;
+  }
+
+  &:active,
+  &:focus { border: 1px solid #a8172f;  background: $borderRed; color: #fff;
+
+    @include box-shadow(inset 0 0 7px rgba(0, 0, 0, .5));
+    @extend %opacity-1;
+  }
+
+  &--file { font-size: $fs10; line-height: $fs12; color: $mainLinkColor; border-color: $mainLinkColor; width: auto; min-width: 0; padding: 5*$crn 5*$crn; height: auto;
+
+    &:hover { background: $mainLinkColor; color: #fff;}
+    &:active,
+    &:focus { border: 1px solid #a8172f;  background: $mainLinkColor; color: #fff;}
+  }
+}
+
+.btn,
+#block-simplenews-7901 .form-submit,
+.pager-load-more a { display: inline-block; min-width: 238*$crn; border: 0; text-align: center; padding: 8*$crn 14*$crn 8*$crn; line-height: $fs30; text-decoration: none; font-family: $PTSans; text-transform: uppercase; color: $mainLinkColor; background: #fff; cursor: pointer; border: 2px solid $borderBlue; font-weight: bold; font-size: $fs14;
+
+  @extend %border-box;
+  @extend %transition;
+  @extend %bdr-4;
+  // @extend %opacity-1;
+
+  &:hover { color: #fff; background-color: $mainLinkColor;}
+
+  // &--bluebd { border: 2px solid $mainLinkColor; background: #fff; font-weight: bold; color: $mainLinkColor;
+
+  //   &:hover { color: #fff; background-color: $mainLinkColor;}
+  // }
+}
+
+
+
+[class^="icon-"] {
+
+  &:before { content: ""; background: url(../img/benefits__icons.png) 50% 0 no-repeat; background-size: 100% auto; display: inline-block; width: 85*$crn; height: 61*$crn;}
+}
+
+.icon {
+
+  &-libra {
+
+    &:before { background-position: 50% (-100 * 0)*$crn;}
+  }
+
+  &-question {
+
+    &:before { background-position: 50% (-100 * 1)*$crn;}
+  }
+
+  &-purse {
+
+    &:before { background-position: 50% (-100 * 2)*$crn;}
+  }
+
+  &-money {
+
+    &:before { background-position: 50% (-100 * 3)*$crn;}
+  }
+
+  &-handshake {
+
+    &:before { background-position: 50% (-100 * 4)*$crn;}
+  }
+}

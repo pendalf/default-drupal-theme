@@ -1,0 +1,96 @@
+@media screen and (max-width: 1200px) {
+
+	
+}
+
+@media screen and (max-width: 1050px) {
+
+}
+
+@media screen and (max-width: 1000px) {
+  
+
+}
+
+
+@media screen and (max-width: 900px) {
+
+	#admin-menu-wrapper { height: 29px; overflow: hidden;}
+	@include row-builder( '.row-photo', 12, 499, 10, w900-);
+}
+
+@media screen and (max-width: 800px) {
+
+	@include row-builder( '.row', 12, 752, 16, md-);
+}
+
+
+@media screen and (max-width: 750px) {
+  
+  //@include row-builder( .row-photo, 12, 375, 8, md-);
+  //.row-photo__item { padding-top: 4*$crn; padding-bottom: 4*$crn;}
+
+}
+
+@media screen and (max-width: 640px) {
+
+	.two-sidebars,
+	.sidebar-second,
+	.sidebar-first, {
+
+		#col_center,
+		#col_center_left_wrap,
+		#col_center_left_wrap_inner,
+		#sidebar-first,
+		#sidebar-second { float: none; margin: 0; width: auto;}
+	}
+
+	.footer_firstcolumn,
+	.footer_secondcolumn,
+	.footer_thirdcolumn { float: none; width: 100%; clear: both; max-width: none;}
+
+  
+}
+
+@media screen and (max-width: 600px) {
+
+	@include row-builder( '.row-photo', 12, 375, 8, w500-);
+}
+
+@media screen and (max-width: 550px) {
+	
+	
+}
+
+@media screen and (max-width: 460px) {
+
+  html { font-size: 14*$crn; /* 14px */}
+
+  
+}
+
+@media screen and (max-width: 400px) {
+
+	@include row-builder( '.row', 12, 376, 8, mb-);
+
+	
+}
+
+@media screen and (max-width: 350px) {
+
+  html { font-size: 12*$crn; /* 12px */}
+  @include row-builder( '.row-photo', 12, 286, 8, w350-);  
+}
+
+
+@media screen and (max-width: 300px) {
+	
+	
+}
+
+@media screen and (max-width: 200px) {
+	
+	@include row-builder( '.row-photo', 12, 144, 8, w200-);
+
+	#logo { width: auto; float: none;}
+}

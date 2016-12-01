@@ -1,0 +1,139 @@
+
+  /* Mixins */
+
+@mixin font-face($fontFamily, $fontpath, $fontWeight: normal, $fontStyle: normal, $local: '') {
+  @if $local != '' {
+    $local: 'local("' + $local;
+    $local: $local + '"),';
+  }
+  font-family: $fontFamily;
+  src: url( $fontpath + '.eot');
+  src: unquote($local)
+       url( $fontpath + '.eot?#iefix') format('embedded-opentype'),
+       url( $fontpath + '.woff') format('woff'),
+       url( $fontpath + '.ttf') format('truetype');
+  font-weight: $fontWeight;
+  font-style: $fontStyle;
+}
+
+@mixin box-sizing($box-sizing){
+  -webkit-box-sizing: $box-sizing;
+  -moz-box-sizing: $box-sizing;
+  box-sizing: $box-sizing;
+} 
+
+@mixin box-shadow($box-shadow){
+  -webkit-box-shadow: $box-shadow;
+  -moz-box-shadow: $box-shadow;
+  box-shadow: $box-shadow;
+}
+
+@mixin border-radius($radius: 5px){
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin transition-duration($time: 200ms){
+  -moz-transition-duration: $time;
+  -webkit-transition-duration: $time;
+  -ms-transition-duration: $time;
+  -o-transition-duration: $time;
+  transition-duration: $time; 
+}
+
+@mixin transition($time: 200ms){
+  -moz-transition: $time;
+  -webkit-transition: $time;
+  -ms-transition: $time;
+  -o-transition: $time;
+  transition: $time; 
+}
+
+@mixin opacity($opacity: 0){
+  filter:progid:DXImageTransform.Microsoft.Alpha(opacity=#{$opacity*100});
+  -moz-opacity: $opacity;
+  -khtml-opacity: $opacity;
+  opacity: $opacity;
+}
+
+@mixin transform($transform){
+  -webkit-transform: $transform;
+  -moz-transform: $transform;
+  -ms-transform: $transform;
+  -o-transform: $transform;
+  transform: $transform;
+}
+
+@mixin appearance($appearance: none){
+  -webkit-appearance: $appearance;
+  -moz-appearance: $appearance;
+  appearance: $appearance;
+}
+
+@mixin column-width($var: 100px) {
+  -webkit-column-width: $var;
+  -moz-column-width: $var;
+  column-width: $var;
+}
+@mixin column-count($var: 1) {
+  -webkit-column-count: $var;
+  -moz-column-count: $var;
+  column-count: $var;
+}
+@mixin column-gap($var: 30px) {
+  -webkit-column-gap: $var;
+  -moz-column-gap: $var;
+  column-gap: $var;
+}
+@mixin column-gap($var: 1px solid #ccc) {
+  -webkit-column-rule: $var;
+  -moz-column-rule: $var;
+  column-rule: $var;
+}
+
+@mixin respond-to($media) {
+  @if $media == handhelds {
+    @media only screen and (max-width: $small) { @content; }
+  }
+  @else if $media == medium-screens {
+    @media only screen and (min-width: $small + 1) and (max-width: $large - 1) { @content; }
+  }
+  @else if $media == wide-screens {
+    @media only screen and (min-width: $large) { @content; }
+  }
+}
+
+@mixin gradient($top, $bottom){
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, $top),
+    color-stop(1, $bottom)
+  );
+  background-image: -o-linear-gradient(bottom, $top 0%, $bottom 100%);
+  background-image: -moz-linear-gradient(bottom, $top 0%, $bottom 100%);
+  background-image: -webkit-linear-gradient(bottom, $top 0%, $bottom 100%);
+  background-image: -ms-linear-gradient(bottom, $top 0%, $bottom 100%);
+  background-image: linear-gradient(to bottom, $top 0%, $bottom 100%);
+}
+
+@mixin row-builder( $el: '.row', $items: 12, $itemsWrapWidth: 1000, $itemsMargin: 10, $prefix: '') {
+
+  $itemsWrapWidthT: $itemsWrapWidth + $itemsMargin;
+  $itemsWidth     : $itemsWrapWidthT / $items;
+
+  #{$el} { padding-top: 6*$crn; padding-bottom: 5*$crn; margin-left: -$itemsMargin / $itemsWrapWidth / 2 * 100%; margin-right: -$itemsMargin / $itemsWrapWidth / 2 * 100%; max-height: none; font-size: $fs14; width: $itemsWidth; overflow: hidden; font-size: 0; max-height: none;
+
+    #{$el} { padding-top: 0; padding-bottom: 0;}  
+
+    &__item { margin-left: $itemsMargin / $itemsWrapWidthT / 2 * 100%;  margin-right: $itemsMargin / $itemsWrapWidthT / 2 * 100%; padding: 5*$crn 0; max-height: none; display: inline-block; vertical-align: top;}
+
+    @for $i from 1 through $items {
+
+      &__#{$prefix}width-#{$i} { width: ($itemsWidth * $i - $itemsMargin) / $itemsWrapWidthT * 100%;}
+
+    }
+  }
+}

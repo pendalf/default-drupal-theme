@@ -1,0 +1,52 @@
+
+name = default drupal theme
+description = Theme with many regions.
+package = Core
+version = VERSION
+core = 7.x
+
+stylesheets[all][] = css/style.scss
+
+scripts[] = js/common.js
+scripts[] = js/socials.js
+
+regions[top_region] = Top region
+regions[header] = Header
+regions[menu_head] = Menu head
+
+regions[help] = Help
+regions[page_top] = Page top
+regions[page_bottom] = Page bottom
+regions[highlighted] = Highlighted
+
+regions[featured] = Featured
+regions[menu_local] = Local menu
+regions[content] = Content
+regions[sidebar_first] = Sidebar first
+regions[sidebar_second] = Sidebar second
+
+;regions[white_region] = White region
+;regions[dark_region] = Dark region
+
+regions[drop_menu] = Drop menu
+
+regions[triptych_first] = Triptych first
+regions[triptych_middle] = Triptych middle
+regions[triptych_last] = Triptych last
+
+regions[footer_firstcolumn] = Footer first column
+regions[footer_secondcolumn] = Footer second column
+regions[footer_thirdcolumn] = Footer third column
+regions[footer_fourthcolumn] = Footer fourth column
+regions[footer] = Footer
+
+regions[end_page] = End page
+
+settings[shortcut_module_link] = 0
+
+
+; Information added by Drupal.org packaging script on 2016-07-07
+version = "7.50"
+project = "drupal"
+datestamp = "1467918493"
+

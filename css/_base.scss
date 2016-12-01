@@ -1,0 +1,149 @@
+
+body.body_bgr {margin: 0; padding: 0; _width: 100%;  min-width: 100%; height: 100%; min-height: 100%;  font-size: $fs16; line-height: $fs19; color: $mainColor; font-family: $Roboto; background: $mainBgColor; font-weight: 300;}
+html {min-height: 100%; height: 100%;}
+#super {position: relative; _height: 100%; min-height: 100%; padding: 0; margin: 0 auto; z-index: 100;}
+.region_inner { max-width: 1200*$crn; margin: 0 auto; position: relative; padding: 0 3%;}
+
+//.spacer_foot { position: relative; margin: 0; width: 1*$crn; height: 260*$crn; font-size: $fs1; padding: 40*$crn 0 0; clear: both}
+
+
+
+#header { position: relative; padding: 7*$crn 0 0; background: #032352; color: #fff;}
+#main {/*height: 100%;*/ margin: 0; padding: 9*$crn 0 0; position: relative; clear: both; overflow: hidden;
+
+  .block { background: #fff; margin-bottom: 18*$crn; padding: 20*$crn;
+
+    @extend %border-box;
+  }
+}
+#footer {position: relative; margin: 0 auto 0 ; padding: 27*$crn 0 30*$crn; z-index: 1; overflow: hidden; color: #494949; font-size: $fs11; line-height: $fs14; z-index: 100;
+
+  p { margin: 0; padding: 5*$crn 0 4*$crn;}
+  .region_inner--cols { border-top: 3px solid $mainLinkColor; padding-top: 17*$crn;}
+}
+
+
+  /* Sidebars */
+$dim: 100%;
+
+$sidebarWidthFirst:      382;
+$sidebarPadFirst:        28;
+
+$sidebarWidthSecond:     382;
+$sidebarPadSecond:       28;
+
+$marginNegativeSecond:   0;
+$marginPositiveSecond:   0;
+$marginNegativeFirstWS:  0;
+$marginNegativeFirst:    0;
+$marginPositiveFirstWS:  0;
+$marginPositiveFirst:    0;
+$sidebarWidthDimFirst:   0;
+$sidebarWidthDimSecond:  0;
+$sidebarWidthDimFirstWS: 0; 
+
+@if $dim != 100% { 
+
+  $marginNegativeFirst:  -($sidebarWidthFirst + $sidebarPadFirst)*$dim;
+  $marginPositiveFirst:  ($sidebarWidthFirst + $sidebarPadFirst)*$dim;
+  $sidebarWidthDimFirst: $sidebarWidthFirst*$dim;
+
+  $marginNegativeSecond:  -($sidebarWidthSecond + $sidebarPadSecond)*$dim;
+  $marginPositiveSecond:  ($sidebarWidthSecond + $sidebarPadSecond)*$dim;
+  $sidebarWidthDimSecond: $sidebarWidthSecond*$dim;
+
+} else {
+
+
+
+  $factor: $dim / $baseWidth;
+
+  $marginNegativeSP: $sidebarWidthSecond + $sidebarPadSecond;
+
+  $marginNegativeSecond:  -$marginNegativeSP*$factor;
+  $marginPositiveSecond:  $marginNegativeSP*$factor;
+  $sidebarWidthDimSecond: $sidebarWidthSecond*$factor;
+
+
+  //$marginNegativeFP: $sidebarWiFirst + $sidebarFirst;
+
+
+  $marginNegativeFirst:  -$marginNegativeSP*$factor;
+  $marginPositiveFirst:  $marginNegativeSP*$factor;
+  $sidebarWidthDimFirst: $sidebarWidthSecond*$factor;
+
+  $factor: $dim / ($baseWidth - $marginNegativeSP);
+
+  $marginNegativeFirstWS:  -($sidebarWidthFirst + $sidebarPadFirst)*$factor;
+  $marginPositiveFirstWS:  ($sidebarWidthFirst + $sidebarPadFirst)*$factor;
+  $sidebarWidthDimFirstWS: $sidebarWidthFirst*$factor;
+
+  // $marginNegativeSecond:  -($sidebarWidthSecond + $sidebarPadSecond)*1px;
+  // $marginPositiveSecond:  ($sidebarWidthSecond + $sidebarPadSecond)*1px;
+  // $sidebarWidthDimSecond: $sidebarWidthSecond*1px;
+}
+
+#col_center_left_wrap { width:100%; position:relative; clear: both;}
+
+.two-sidebars,
+.sidebar-second {
+  #col_center_left_wrap { float: left; margin-right: $marginNegativeSecond;}
+}
+
+.two-sidebars,
+.sidebar-second {
+  #col_center_left_wrap_inner { margin-right: $marginPositiveSecond; overflow: hidden;}
+}
+.sidebar-second #col_center_left_wrap_inner { margin-left: 0;}
+
+
+
+#col_center { width:100%;}
+#col_center_inner { padding-top: 1px;}
+
+.two-sidebars,
+.sidebar-first {
+  #col_center { float: right; margin-left: $marginNegativeFirstWS;}
+}
+
+.sidebar-first {
+  #col_center { float: right; margin-left: $marginNegativeFirst;}
+}
+
+
+.two-sidebars,
+.sidebar-first {
+  #col_center_inner { margin-left: $marginPositiveFirstWS;}
+}
+
+.sidebar-first {
+  #col_center_inner { margin-left: $marginPositiveFirst;}
+}
+.sidebar-first #col_center_inner { margin-right: 0;}
+
+
+#sidebar-first,
+#sidebar-second { width: $sidebarWidthDimFirst; position:relative; padding: 0; float: left; }
+#sidebar-second { float: right; width: $sidebarWidthDimSecond;}
+
+.two-sidebars #sidebar-first { width: $sidebarWidthDimFirstWS;}
+
+#content_bot { clear: both;}
+
+#featured { padding-top: 10*$crn;
+
+  //.region_inner { text-align: center; padding: 0; max-width: none;}
+}
+
+#messages,
+.breadcrumb,
+.tabs-wrapper { background: #fff; padding: 5*$crn 29*$crn;}
+
+.breadcrumb { font-size: $fs14; color: #6c6c6c; padding-top: 26*$crn;
+
+  a { 
+
+    @extend %td-n;
+  }
+  .breadcrumb { padding: 0;}
+}
