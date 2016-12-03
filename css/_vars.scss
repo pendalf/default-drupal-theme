@@ -112,6 +112,7 @@ $icons:    'Icons';
 %opacity-0 { @include opacity(0);}
 %opacity-50 { @include opacity(.5);}
 %opacity-80 { @include opacity(.8);}
+%opacity-90 { @include opacity(.9);}
 %opacity-1 { @include opacity(1);}
 
 %td-n { text-decoration: none;
