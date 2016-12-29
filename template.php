@@ -446,7 +446,7 @@ function default_drupal_theme_form_alter(&$form, $form_state, $form_id) {
   //     // $form['actions']['submit']['#value'] = t('Send');
       
   //     // break;
-  // }
+  }
 }
 
 
