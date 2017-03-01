@@ -1,0 +1,24 @@
+{
+  "name": "tmed",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "browser-sync": "^2.18.2",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-sass-glob": "^1.0.6",
+    "gulp-sourcemaps": "^1.9.1"
+  },
+  "devDependencies": {
+    "gulp-group-css-media-queries": "^1.2.0",
+    "gulp-iconfont": "^8.0.1",
+    "node-bourbon": "^4.2.8"
+  }
+}

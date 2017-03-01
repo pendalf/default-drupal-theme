@@ -6,7 +6,7 @@ require_once "includes/_functions.php";
 /**
  * Add body classes if certain regions have content.
  */
-function default_drupal_theme_preprocess_html(&$vars) {
+function sand_preprocess_html(&$vars) {
   if (!empty($vars['page']['featured'])) {
     $vars['classes_array'][] = 'featured';
   }
@@ -30,7 +30,7 @@ function default_drupal_theme_preprocess_html(&$vars) {
 /**
  * Override or insert variables into the page template for HTML output.
  */
-function default_drupal_theme_process_html(&$vars) {
+function sand_process_html(&$vars) {
   // Hook into color.module.
   if (module_exists('color')) {
     _color_html_alter($vars);
@@ -40,7 +40,7 @@ function default_drupal_theme_process_html(&$vars) {
 /**
  * Override or insert variables into the page template.
  */
-function default_drupal_theme_process_page(&$vars) {
+function sand_process_page(&$vars) {
   // Hook into color.module.
   if (module_exists('color')) {
     _color_page_alter($vars);
@@ -74,7 +74,7 @@ function default_drupal_theme_process_page(&$vars) {
   }
 
   //Front page
-  // $vars['front_page'] = _default_drupal_theme_front_page();
+  // $vars['front_page'] = _sand_front_page();
 
   // $vars['main_class'] = '';
 
@@ -110,7 +110,7 @@ function default_drupal_theme_process_page(&$vars) {
 /**
  * Implements hook_preprocess_maintenance_page().
  */
-function default_drupal_theme_preprocess_maintenance_page(&$vars) {
+function sand_preprocess_maintenance_page(&$vars) {
   // By default, site_name is set to Drupal if no db connection is available
   // or during site installation. Setting site_name to an empty string makes
   // the site and update pages look cleaner.
@@ -118,13 +118,13 @@ function default_drupal_theme_preprocess_maintenance_page(&$vars) {
   if (!$vars['db_is_active']) {
     $vars['site_name'] = '';
   }
-  drupal_add_css(drupal_get_path('theme', 'default_drupal_theme') . '/css/maintenance-page.css');
+  drupal_add_css(drupal_get_path('theme', 'sand') . '/css/maintenance-page.css');
 }
 
 /**
  * Override or insert variables into the maintenance page template.
  */
-function default_drupal_theme_process_maintenance_page(&$vars) {
+function sand_process_maintenance_page(&$vars) {
   // Always print the site name and slogan, but if they are toggled off, we'll
   // just hide them visually.
   $vars['hide_site_name']   = theme_get_setting('toggle_name') ? FALSE : TRUE;
@@ -142,7 +142,7 @@ function default_drupal_theme_process_maintenance_page(&$vars) {
 /**
  * Override or insert variables into the node template.
  */
-function default_drupal_theme_preprocess_node(&$vars) {
+function sand_preprocess_node(&$vars) {
 
   $node = $vars['node'];
 
@@ -196,7 +196,7 @@ function default_drupal_theme_preprocess_node(&$vars) {
 
 }
 
-function default_drupal_theme_process_node(&$vars) {
+function sand_process_node(&$vars) {
 
   //print_r($vars);
 }
@@ -204,7 +204,7 @@ function default_drupal_theme_process_node(&$vars) {
 /**
  * Override or insert variables into the block template.
  */
-function default_drupal_theme_preprocess_block(&$vars) {
+function sand_preprocess_block(&$vars) {
   // In the header region visually hide block titles.
   if ($vars['block']->region == 'header') {
     $vars['title_attributes_array']['class'][] = 'element-invisible';
@@ -228,14 +228,14 @@ function default_drupal_theme_preprocess_block(&$vars) {
 /**
  * Implements theme_menu_tree().
  */
-function default_drupal_theme_menu_tree($vars) {
+function sand_menu_tree($vars) {
   return '<ul class="menu clearfix">' . $vars['tree'] . '</ul>';
 }
 
 /**
  * Implements theme_field__field_type().
  */
-function default_drupal_theme_field__taxonomy_term_reference($vars) {
+function sand_field__taxonomy_term_reference($vars) {
   $output = '';
 
   // Render the label, if it's not hidden.
@@ -261,7 +261,7 @@ function default_drupal_theme_field__taxonomy_term_reference($vars) {
  * Preprocess the primary theme implementation for a view.
  */
 
-function default_drupal_theme_preprocess_views_view(&$vars) {
+function sand_preprocess_views_view(&$vars) {
 
   $modify = array(
     // '3v_front_main_news' => array(
@@ -325,7 +325,7 @@ function default_drupal_theme_preprocess_views_view(&$vars) {
   }
 }
 
-function default_drupal_theme_preprocess_views_view_unformatted(&$vars) {
+function sand_preprocess_views_view_unformatted(&$vars) {
   $view    = $vars['view'];
   $name    = $view->name;
   $display = $view->current_display;
@@ -384,7 +384,7 @@ function default_drupal_theme_preprocess_views_view_unformatted(&$vars) {
 }
 
 
-function default_drupal_theme_form_alter(&$form, $form_state, $form_id) {
+function sand_form_alter(&$form, $form_state, $form_id) {
 
   switch ($form_id) {
 
@@ -451,7 +451,7 @@ function default_drupal_theme_form_alter(&$form, $form_state, $form_id) {
 
 
 
-function default_drupal_theme_field($vars) {
+function sand_field($vars) {
   $output = '';
 
   // Render the label, if it's not hidden.

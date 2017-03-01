@@ -1,11 +1,11 @@
 
-name = default drupal theme
+name = Sand
 description = Theme with many regions.
 package = Core
 version = VERSION
 core = 7.x
 
-stylesheets[all][] = css/style.scss
+stylesheets[all][] = css/style.css
 
 scripts[] = js/common.js
 scripts[] = js/socials.js
