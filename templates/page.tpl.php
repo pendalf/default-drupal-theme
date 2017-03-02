@@ -88,15 +88,16 @@
 
 <div id="super">
   <?php if ($page['header']) :?>
-  <div id="header">
+  <section id="header" class="section section--header">
 
     <?php if ($page['top_region']): ?><div id="top_region"><div class="region_inner clearfix"><?php print render($page['top_region']); ?></div></div><?php endif; ?>
 
-    <div class="region_inner clearfix">
+    <div class="section__inner clearfix">
       <?php if ($logo): ?>
         <div id="logo_inner">
-          <a href="http://mger2020.ru" title="<?php print t('Home'); ?>" rel="home" id="logo">
+          <a href="" title="<?php print t('Home'); ?>" rel="home" id="logo">
             <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+            <span>Продажа щебня, песка,<br />услуги спецтехники по Москве и области</span>
           </a>
         </div>
       <?php endif; ?>
@@ -105,7 +106,7 @@
 
     <?php if ($page['menu_head']): ?><div id="menu_head"><div class="region_inner clearfix"><?php print render($page['menu_head']); ?></div></div><?php endif; ?>
     
-  </div>
+  </section class="section section--header">
   <?php endif; ?>
   <?php if ($page['featured']) { print '<div id="featured"><div id="featured_inner"><div class="region_inner clearfix">' . render($page['featured']) . '</div></div></div>';}?>
   <?php if ($page['menu_local']) { print '<div id="menu_local"><div id="menu_local_inner"><div class="region_inner clearfix">' . render($page['menu_local']) . '</div></div></div>';}?>
