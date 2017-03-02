@@ -76,7 +76,7 @@ function sand_process_page(&$vars) {
   //Front page
   // $vars['front_page'] = _sand_front_page();
 
-  // $vars['main_class'] = '';
+  $vars['main_class'] = ' class="section section--main-region"';
 
   // $nodeTypeArray = array('region');
   // if (
