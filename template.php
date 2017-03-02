@@ -76,7 +76,7 @@ function default_drupal_theme_process_page(&$vars) {
   //Front page
   // $vars['front_page'] = _default_drupal_theme_front_page();
 
-  $vars['main_class'] = '';
+  $vars['main_class'] = ' class="section section--main-region"';
 
   // $nodeTypeArray = array('region');
   // if (
