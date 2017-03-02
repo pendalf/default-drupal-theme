@@ -88,9 +88,9 @@
 
 <div id="super">
   <?php if ($page['header']) :?>
-  <section id="header" class="section section--header">
+  <header id="header" class="section section--header">
 
-    <?php if ($page['top_region']): ?><div id="top_region"><div class="region_inner clearfix"><?php print render($page['top_region']); ?></div></div><?php endif; ?>
+    <?php if ($page['top_region']): ?><section id="top_region" class="section section--top_region"><div class="section__inner clearfix"><?php print render($page['top_region']); ?></div></section><?php endif; ?>
 
     <div class="section__inner clearfix">
       <?php if ($logo): ?>
@@ -104,84 +104,86 @@
       <?php print render($page['header']); ?>
     </div>
 
-    <?php if ($page['menu_head']): ?><div id="menu_head"><div class="region_inner clearfix"><?php print render($page['menu_head']); ?></div></div><?php endif; ?>
+    <?php if ($page['menu_head']): ?><div id="menu_head"><div class="section__inner clearfix"><?php print render($page['menu_head']); ?></div></div><?php endif; ?>
     
-  </section class="section section--header">
+  </header>
   <?php endif; ?>
-  <?php if ($page['featured']) { print '<div id="featured"><div id="featured_inner"><div class="region_inner clearfix">' . render($page['featured']) . '</div></div></div>';}?>
-  <?php if ($page['menu_local']) { print '<div id="menu_local"><div id="menu_local_inner"><div class="region_inner clearfix">' . render($page['menu_local']) . '</div></div></div>';}?>
-  <div id="main">
+  <?php if ($page['featured']) { 
+      print '<section id="featured" class="section section--featured"><div class="section__inner clearfix">' . render($page['featured']) . '</div></section>'
+  ;}?>
+  <?php if ($page['menu_local']) { print '<section id="menu_local" class="section section--menu_local"><div class="section__inner clearfix">' . render($page['menu_local']) . '</div></section>';}?>
+  <main id="main">
 
-    <div id="main-region"<?php print $main_class;?>><div class="region_inner clearfix">
+    <section id="main-region"<?php print $main_class;?>>
+      <div class="section__inner clearfix">
 
-      <div id="col_center_left_wrap">
-       <div id="col_center_left_wrap_inner">
-        <div id="col_center">
-         <div id="col_center_inner">
-          <div class="content_wrapper"><div class="content_wrapper_inner">
+        <div id="col_center_left_wrap">
+         <div id="col_center_left_wrap_inner">
+          <div id="col_center">
+           <div id="col_center_inner">
+            <div class="content_wrapper"><div class="content_wrapper_inner">
 
-            <?php if ($breadcrumb): ?>
-              <div id="breadcrumb" class="breadcrumb"><?php print $breadcrumb; ?></div>
-            <?php endif; ?>
-            <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
-            <a id="main-content"></a>
-            <?php if ($messages): ?><div id="messages"><div class="section clearfix"><?php print $messages; ?></div></div> <!-- /.section, /#messages --><?php endif; ?>
-            <?php print render($title_prefix); ?>
-            <?php if ($title): ?>
-              <div class="block__title block__title--page">
-                <h1 class="title" id="page-title">
-                  <?php print $title; ?>
-                </h1>
-              </div>
+              <?php if ($breadcrumb): ?>
+                <div id="breadcrumb" class="breadcrumb"><?php print $breadcrumb; ?></div>
+              <?php endif; ?>
+              <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
+              <a id="main-content"></a>
+              <?php if ($messages): ?><div id="messages"><div class="section clearfix"><?php print $messages; ?></div></div> <!-- /.section, /#messages --><?php endif; ?>
+              <?php print render($title_prefix); ?>
+              <?php if ($title): ?>
+                <div class="block__title block__title--page">
+                  <h1 class="title" id="page-title">
+                    <?php print $title; ?>
+                  </h1>
+                </div>
 
-            <?php endif; ?>
-            <?php print render($title_suffix); ?>
+              <?php endif; ?>
+              <?php print render($title_suffix); ?>
 
-            <?php if (!empty($tabs['#primary'])): ?>
-              <div class="tabs-wrapper">
-                <?php print render($tabs); ?>
-              </div>
-            <?php endif; ?>
-            <?php print render($page['help']); ?>
-            <?php if ($action_links): ?>
-              <ul class="action-links">
-                <?php print render($action_links); ?>
-              </ul>
-            <?php endif; ?>
-            <?php print render($page['content']); ?>
-            <?php print $feed_icons; ?>
-          </div></div>
+              <?php if (!empty($tabs['#primary'])): ?>
+                <div class="tabs-wrapper">
+                  <?php print render($tabs); ?>
+                </div>
+              <?php endif; ?>
+              <?php print render($page['help']); ?>
+              <?php if ($action_links): ?>
+                <ul class="action-links">
+                  <?php print render($action_links); ?>
+                </ul>
+              <?php endif; ?>
+              <?php print render($page['content']); ?>
+              <?php print $feed_icons; ?>
+            </div></div>
+           </div>
+          </div><!-- /#col_center -->
+          <?php if (isset($page['sidebar_first']) && $page['sidebar_first']) { print '<div id="sidebar-first" class="column sidebar"><div class="section">'.render($page['sidebar_first']).'</div></div> <!-- /.section, /#sidebar-first -->';} ?>
+          <div class="clear"></div>
          </div>
-        </div><!-- /#col_center -->
-        <?php if (isset($page['sidebar_first']) && $page['sidebar_first']) { print '<div id="sidebar-first" class="column sidebar"><div class="section">'.render($page['sidebar_first']).'</div></div> <!-- /.section, /#sidebar-first -->';} ?>
-        <div class="clear"></div>
-       </div>
-      </div><!-- /#col_center_left_wrap -->
+        </div><!-- /#col_center_left_wrap -->
 
-      <?php if (isset($page['sidebar_second']) && $page['sidebar_second']) { print '<div id="sidebar-second" class="column sidebar"><div class="section">'.render($page['sidebar_second']).'</div></div> <!-- /.section, /#sidebar-second -->';} ?>
+        <?php if (isset($page['sidebar_second']) && $page['sidebar_second']) { print '<div id="sidebar-second" class="column sidebar"><div class="section">'.render($page['sidebar_second']).'</div></div> <!-- /.section, /#sidebar-second -->';} ?>
 
-    </div></div> <!-- /#main-region -->
-  </div>
-
-  <div class="spacer_foot"></div>
+      </div>
+    </section> <!-- /#main-region -->
+  </main>
 </div>
 
 
-<div id="footer">
+<footer id="footer">
 
   <?php if ($page['triptych_first'] || $page['triptych_middle'] || $page['triptych_last']) : ?>
-    <div id="prefooter"><div class="region_inner">
+    <section id="prefooter" class="section section--prefooter"><div class="section__inner">
       <?php if ($page['triptych_first'] || $page['triptych_middle'] || $page['triptych_last']): ?>
         <div id="triptych-wrapper"><div id="triptych" class="clearfix">
           <?php print render($page['triptych_first']); ?>
           <?php print render($page['triptych_middle']); ?>
           <?php print render($page['triptych_last']); ?>
-        </div></div> <!-- /#triptych, /#triptych-wrapper -->
+        </div></section> <!-- /#triptych, /#triptych-wrapper -->
       <?php endif; ?>
       
     </div></div>
   <?php endif; ?>
-  <div class="region_inner clearfix"><div class="region_inner--cols">
+  <div class="section__inner clearfix"><div class="section__inner--cols">
 
     <?php if ($page['footer_firstcolumn'] || $page['footer_secondcolumn'] || $page['footer_thirdcolumn']) : ?>
       
@@ -193,10 +195,10 @@
         
     <?php endif; ?>
   </div></div>
-  <div class="region_inner clearfix">
+  <div class="section__inner clearfix">
     <?php print render($page['footer']); ?>
   </div>
-</div>
+</footer>
 
 <?php if ($page['drop_menu']) { 
   print '<div id="drop_menu">';
