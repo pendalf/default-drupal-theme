@@ -57,7 +57,7 @@ $sidebarWidthDimFirstWS: 0;
   $marginPositiveSecond:  ($sidebarWidthSecond + $sidebarPadSecond)*$dim;
   $sidebarWidthDimSecond: $sidebarWidthSecond*$dim;
 
-} else {
+} @else {
 
 
 
