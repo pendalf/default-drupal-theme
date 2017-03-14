@@ -86,7 +86,7 @@ $Lato:     'Lato', sans-serif;
 $Raleway:  'Raleway', sans-serif;
 $PTSans:   'Pt Sans', sans-serif;
 $Roboto:   'Roboto', sans-serif;
-$icons:    'Icons';
+$Icons:    'Icons';
 
 
   /* Defaults */
@@ -223,36 +223,77 @@ $icons:    'Icons';
 }
 
 
+%icons-fonts { font-family: $Icons;}
+%up { content: "\e90d";
+  
+  @extend %icons-fonts;
+}
+%24 { content: "\ea01";
+  
+  @extend %icons-fonts;
+}
+%attention { content: "\ea02";
+  
+  @extend %icons-fonts;
+}
+%check { content: "\ea03";
+  
+  @extend %icons-fonts;
+}
+%search { content: "\ea04";
+  
+  @extend %icons-fonts;
+}
+%telegram { content: "\ea05";
+  
+  @extend %icons-fonts;
+}
+
 
 [class^="icon-"] {
 
-  &:before { content: ""; background: url(../img/benefits__icons.png) 50% 0 no-repeat; background-size: 100% auto; display: inline-block; width: 85*$crn; height: 61*$crn;}
+  &:before {}
 }
 
-.icon {
+.icon { font-style: normal;
 
-  &-libra {
+  &--24 {
 
-    &:before { background-position: 50% (-100 * 0)*$crn;}
+    &:before {
+
+      @extend %24;
+    }
   }
 
-  &-question {
+  &--telegram {
 
-    &:before { background-position: 50% (-100 * 1)*$crn;}
+    &:before {
+
+      @extend %telegram;
+    }
   }
 
-  &-purse {
+  &--check {
 
-    &:before { background-position: 50% (-100 * 2)*$crn;}
+    &:before {
+
+      @extend %check;
+    }
   }
 
-  &-money {
+  &--attention {
 
-    &:before { background-position: 50% (-100 * 3)*$crn;}
+    &:before {
+
+      @extend %attention;
+    }
   }
 
-  &-handshake {
+  &--search {
 
-    &:before { background-position: 50% (-100 * 4)*$crn;}
+    &:before {
+
+      @extend %search;
+    }
   }
 }

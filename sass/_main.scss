@@ -157,7 +157,7 @@ h2 { font-size: $fs22; line-height: $fs26;}
   .form-item { display: none;}
   .form-actions {
 
-    &:before { content: "\e908"; color: $mainLinkColor; font-family: $icons; font-size: $fs30; line-height: $fs26;
+    &:before { content: "\e908"; color: $mainLinkColor; font-family: $Icons; font-size: $fs30; line-height: $fs26;
 
       @extend %serach_submit;
       @extend %transition;
@@ -256,7 +256,7 @@ h2 { font-size: $fs22; line-height: $fs26;}
 
 		a {
 			
-			// &:before { content: "\e909"; font-family: $icons; position: absolute; color: #fff; top: 50%; left: 0; right: 0; display: block; text-align: center; font-size: 35*$crn; z-index: 10; margin-top: -10*$crn;
+			// &:before { content: "\e909"; font-family: $Icons; position: absolute; color: #fff; top: 50%; left: 0; right: 0; display: block; text-align: center; font-size: 35*$crn; z-index: 10; margin-top: -10*$crn;
 
 			// 	@extend %transition;
 			// }
@@ -309,7 +309,7 @@ h2 { font-size: $fs22; line-height: $fs26;}
 
 	a { width: 422*$crn; max-width: 95%;
 
-		&:before { content: "\e900"; display: inline-block; vertical-align: middle; font-family: $icons; font-size: $fs21; font-weight: normal; margin: -4*$crn 20*$crn 0 0;
+		&:before { content: "\e900"; display: inline-block; vertical-align: middle; font-family: $Icons; font-size: $fs21; font-weight: normal; margin: -4*$crn 20*$crn 0 0;
 
 			
 		}
@@ -454,7 +454,7 @@ ul.social { font-size: 0; max-height: none; display: inline-block; vertical-alig
 			&:hover { border-color: #fff; color: #fff;}
 
 
-			&:before { font-family: $icons; display: block; text-indent: 0;
+			&:before { font-family: $Icons; display: block; text-indent: 0;
 
 				@extend %transition;
 			}
@@ -692,7 +692,7 @@ ul.social { font-size: 0; max-height: none; display: inline-block; vertical-alig
 	@extend %opacity-1;
 	@include box-shadow(0 0 6px rgba(0, 0, 0, .5));
 
-	&:after { content: "\e90d"; display: inline-block; font-family: $icons; font-size: $fs20; line-height: $fs30}
+	&:after { content: "\e90d"; display: inline-block; font-family: $Icons; font-size: $fs20; line-height: $fs30}
 
 	&:hover { color: brown}
 

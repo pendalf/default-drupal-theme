@@ -112,8 +112,7 @@ form {
 
   &:hover { border-color: #84a5ea;}
 }
-.check_radio,
-.check_checkbox { border-color: #84a5ea;
+.check_radio { border-color: #84a5ea;
 
   @include box-shadow(0 0 7px #84a5ea);
 
@@ -123,6 +122,25 @@ form {
 .check_radio:after {
 
 	@extend %bdr-50p;
+}
+
+.checkbox { text-align: center;
+
+  @extend %bdr-4;
+
+  &:after { font-size: $fs18; line-height: $fs22; color: $mainLinkColor;
+
+    @extend %pabs;
+  }
+
+
+}
+.check_checkbox {
+
+  &:after {
+
+    @extend %check;
+  }
 }
 
 
