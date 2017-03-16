@@ -354,6 +354,48 @@ h2 { font-size: $fs22; line-height: $fs26;}
 }
 
 
+.item-list {
+  .pager { margin: 0; padding: 40*$crn 0; word-spacing: 0;
+
+    li { margin: 0 -1px 0 0; padding: 0; word-spacing: normal; display: inline-block; position: relative;
+
+      a,
+      & > span,
+      &.pager-ellipsis > span { border: 1px solid #dbdbdb; display: inline-block; height: 37*$crn; padding: 0 5*$crn; min-width: 28*$crn; text-align: center; background: #fff; line-height: 37*$crn; font-size: 15*$crn; font-weight: normal; color: $mainColor; text-decoration: none; vertical-align: top;
+
+        @extend %transition;
+        @extend %bdr-2;
+      }
+      a:hover,
+      & > span { background: $mainLinkColor; border-color: #60a3d0; color: #fff;}
+
+      &.pager-current,
+      &:hover { z-index: 10;}
+
+      &.pager-previous,
+      &.pager-next {
+
+        a { padding-left: 15*$crn; padding-right: 15*$crn; font-size: 0;}
+      }
+
+      &.pager-previous span:before,
+      &.pager-next span:after { display: inline-block; height: 13*$crn; position: relative; top: 7*$crn; font-size: $fs14; line-height: $fs14;}
+
+      &.pager-next span:after {
+
+        @extend %arrow-right;
+      }
+      &.pager-previous span:before {
+
+        @extend %arrow-left;
+      }
+    }
+    
+  }
+}
+
+
+
 .slick-dots {
 
 	li { width: auto; height: auto; margin: 0 1px 0 0;
