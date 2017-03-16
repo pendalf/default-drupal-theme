@@ -97,7 +97,7 @@
         <div id="logo_inner">
           <a href="" title="<?php print t('Home'); ?>" rel="home" id="logo">
             <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-            <span>Продажа щебня, песка,<br />услуги спецтехники по Москве и области</span>
+            <span>Текст под логотипом</span>
           </a>
         </div>
       <?php endif; ?>

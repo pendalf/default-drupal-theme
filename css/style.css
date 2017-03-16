@@ -20,7 +20,9 @@
 form .form-submit, .block-search-form-hover .form-submit, .btn,
 #block-simplenews-7901 .form-submit,
 .pager-load-more a, form .form-text, .forms_css .select .checked_option, .forms_css .select .checked_option:after, .forms_css .select .option, .radio,
-.checkbox, #block-superfish-1 li > span, #block-superfish-1 li a, .default-view-search .form-actions:before, .gallery-slider .views-field-title, .slick-dots li button, ul.social li a, ul.social li a:before, #drop_menu:before, .slidebar, #up {
+.checkbox, #block-superfish-1 li > span, #block-superfish-1 li a, .default-view-search .form-actions:before, .gallery-slider .views-field-title, .item-list .pager li a,
+.item-list .pager li > span,
+.item-list .pager li.pager-ellipsis > span, .slick-dots li button, ul.social li a, ul.social li a:before, #drop_menu:before, .slidebar, #up {
   -moz-transition-duration: 0.2s;
   -webkit-transition-duration: 0.2s;
   -ms-transition-duration: 0.2s;
@@ -56,7 +58,9 @@ img {
   border-radius: 0; }
 
 form .form-submit, .block-search-form-hover .form-submit, .radio,
-.checkbox, #block-superfish-1 li > span, #block-superfish-1 li a, .socials-share .socials-share-wrap {
+.checkbox, #block-superfish-1 li > span, #block-superfish-1 li a, .item-list .pager li a,
+.item-list .pager li > span,
+.item-list .pager li.pager-ellipsis > span, .socials-share .socials-share-wrap {
   -webkit-border-radius: 0.125rem;
   -moz-border-radius: 0.125rem;
   border-radius: 0.125rem; }
@@ -234,7 +238,7 @@ form .form-submit, .block-search-form-hover .form-submit {
     color: #fff;
     background-color: #2f55a5; }
 
-.icon--24:before, .icon--attention:before, .icon--check:before, .check_checkbox:after, .icon--search:before, .icon--telegram:before {
+.icon--24:before, .icon--attention:before, .icon--check:before, .check_checkbox:after, .icon--search:before, .icon--telegram:before, .icon--arrow-left:before, .item-list .pager li.pager-previous span:before, .icon--arrow-right:before, .item-list .pager li.pager-next span:after, .icon--burger:before {
   font-family: "Icons"; }
 
 .icon--24:before {
@@ -251,6 +255,15 @@ form .form-submit, .block-search-form-hover .form-submit {
 
 .icon--telegram:before {
   content: "\ea05"; }
+
+.icon--arrow-left:before, .item-list .pager li.pager-previous span:before {
+  content: "\ea06"; }
+
+.icon--arrow-right:before, .item-list .pager li.pager-next span:after {
+  content: "\ea07"; }
+
+.icon--burger:before {
+  content: "\ea08"; }
 
 .icon {
   font-style: normal; }
@@ -1056,6 +1069,52 @@ h2 {
     -ms-transform: rotate(360deg);
     -o-transform: rotate(360deg);
     transform: rotate(360deg); } }
+
+.item-list .pager {
+  margin: 0;
+  padding: 2.5rem 0;
+  word-spacing: 0; }
+  .item-list .pager li {
+    margin: 0 -1px 0 0;
+    padding: 0;
+    word-spacing: normal;
+    display: inline-block;
+    position: relative; }
+    .item-list .pager li a,
+    .item-list .pager li > span,
+    .item-list .pager li.pager-ellipsis > span {
+      border: 1px solid #dbdbdb;
+      display: inline-block;
+      height: 2.3125rem;
+      padding: 0 0.3125rem;
+      min-width: 1.75rem;
+      text-align: center;
+      background: #fff;
+      line-height: 2.3125rem;
+      font-size: 0.9375rem;
+      font-weight: normal;
+      color: #272727;
+      text-decoration: none;
+      vertical-align: top; }
+    .item-list .pager li a:hover,
+    .item-list .pager li > span {
+      background: #2f55a5;
+      border-color: #60a3d0;
+      color: #fff; }
+    .item-list .pager li.pager-current, .item-list .pager li:hover {
+      z-index: 10; }
+    .item-list .pager li.pager-previous a, .item-list .pager li.pager-next a {
+      padding-left: 0.9375rem;
+      padding-right: 0.9375rem;
+      font-size: 0; }
+    .item-list .pager li.pager-previous span:before,
+    .item-list .pager li.pager-next span:after {
+      display: inline-block;
+      height: 0.8125rem;
+      position: relative;
+      top: 0.4375rem;
+      font-size: 0.875rem;
+      line-height: 0.875rem; }
 
 .slick-dots li {
   width: auto;

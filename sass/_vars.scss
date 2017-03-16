@@ -248,6 +248,18 @@ $Icons:    'Icons';
   
   @extend %icons-fonts;
 }
+%arrow-left { content: "\ea06";
+  
+  @extend %icons-fonts;
+}
+%arrow-right { content: "\ea07";
+  
+  @extend %icons-fonts;
+}
+%burger { content: "\ea08";
+  
+  @extend %icons-fonts;
+}
 
 
 [class^="icon-"] {
@@ -294,6 +306,27 @@ $Icons:    'Icons';
     &:before {
 
       @extend %search;
+    }
+  }
+  &--arrow-left {
+
+    &:before {
+
+      @extend %arrow-left;
+    }
+  }
+  &--arrow-right {
+
+    &:before {
+
+      @extend %arrow-right;
+    }
+  }
+  &--burger {
+
+    &:before {
+
+      @extend %burger;
     }
   }
 }
