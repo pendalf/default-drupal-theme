@@ -238,7 +238,7 @@ form .form-submit, .block-search-form-hover .form-submit {
     color: #fff;
     background-color: #2f55a5; }
 
-.icon--24:before, .icon--attention:before, .icon--check:before, .check_checkbox:after, .icon--search:before, .icon--telegram:before, .icon--arrow-left:before, .item-list .pager li.pager-previous span:before, .icon--arrow-right:before, .item-list .pager li.pager-next span:after, .icon--burger:before {
+.icon--24:before, .icon--attention:before, .icon--check:before, .check_checkbox:after, .icon--search:before, .icon--telegram:before, .icon--arrow-left:before, .item-list .pager li.pager-previous span:before, .icon--arrow-right:before, .item-list .pager li.pager-next span:after, .icon--burger:before, .icon--vk:before, .icon--fb:before, .icon--in:before {
   font-family: "Icons"; }
 
 .icon--24:before {
@@ -264,6 +264,15 @@ form .form-submit, .block-search-form-hover .form-submit {
 
 .icon--burger:before {
   content: "\ea08"; }
+
+.icon--vk:before {
+  content: "\ea09"; }
+
+.icon--fb:before {
+  content: "\ea10"; }
+
+.icon--in:before {
+  content: "\ea11"; }
 
 .icon {
   font-style: normal; }

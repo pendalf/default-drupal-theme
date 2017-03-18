@@ -223,6 +223,7 @@ $Icons:    'Icons';
 }
 
 
+
 %icons-fonts { font-family: $Icons;}
 %up { content: "\e90d";
   
@@ -257,6 +258,18 @@ $Icons:    'Icons';
   @extend %icons-fonts;
 }
 %burger { content: "\ea08";
+  
+  @extend %icons-fonts;
+}
+%vk { content: "\ea09";
+  
+  @extend %icons-fonts;
+}
+%fb { content: "\ea10";
+  
+  @extend %icons-fonts;
+}
+%in { content: "\ea11";
   
   @extend %icons-fonts;
 }
@@ -327,6 +340,27 @@ $Icons:    'Icons';
     &:before {
 
       @extend %burger;
+    }
+  }
+  &--vk {
+
+    &:before {
+
+      @extend %vk;
+    }
+  }
+  &--fb {
+
+    &:before {
+
+      @extend %fb;
+    }
+  }
+  &--in {
+
+    &:before {
+
+      @extend %in;
     }
   }
 }
