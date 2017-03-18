@@ -237,13 +237,37 @@ jQuery(document).ready(function($) {
       }
     }
 
-    // Подгонка по высоте элеметов из блока .block-plates
+    // Подгонка по высоте элеметов из блока .news
 
-    if ($('.block-plates').size()) {
+    if ($('.news').size()) {
 
-      $('.block-plates').each(function(){
+      $('.news').each(function(){
 
-        blockPlates($(this));
+        blockPlates($(this), '.node__main', {base: 0});
+
+      });
+    }
+
+    // Подгонка по высоте элемнтов страницы с лентой нод
+
+    if ($('.node-feed').size()) {
+
+      $('.node-feed').each(function(){
+
+        var counts = {
+
+          base: 2,
+          waypoints: [
+
+            {
+              width: 551,
+              max:   1
+            }
+          ]
+        }
+
+        blockPlates($(this), '.node__title', counts);
+
       });
     }
 
@@ -298,23 +322,50 @@ jQuery(document).ready(function($) {
  
 });
 
-function blockPlates(plates) {
+function blockPlates(plates, item, elCounts) {
 
   $ = jQuery;
+
+  if(typeof elCounts == 'undefined') {
+    
+    elCounts = {base: 3}
+  }
+  if(!Array.isArray(elCounts.waypoints)) {
+    
+    elCounts.waypoints = [
+      {
+        width: 801,
+        max:   2
+      },
+      {
+        width: 401,
+        max:   1
+      }
+    ]
+  }
+  if(typeof item == 'undefined') {
+    
+    item = '.item';
+  }
 
   var el,
       index      = 1,
       elHeight   = 0,
-      maxEl      = 3,
+      maxEl      = elCounts.base,
       permission = true;
 
-  if (window.innerWidth < 801) {
-    maxEl = 2;
-  };
-  if (window.innerWidth < 401) {
-    maxEl = 1;
-  }
+  if (elCounts.waypoints.length) {
 
+    for (var i=0, len=elCounts.waypoints.length; i<len; i++) {
+      // Проверка, чтобы убедиться, что текущее значение массива числовое
+      if ( typeof elCounts.waypoints[i] === 'object' ) {
+        if (window.innerWidth < elCounts.waypoints[i].width && maxEl > elCounts.waypoints[i].max) {
+
+          maxEl = elCounts.waypoints[i].max;
+        }
+      }
+    }
+  }
 
   plates.find('img').each(function(){
 
@@ -324,7 +375,7 @@ function blockPlates(plates) {
       permission = false;
       setTimeout(function(){
 
-        blockPlates(plates);
+        blockPlates(plates, item, elCounts);
       }, 10);
       return false;
     }
@@ -332,27 +383,33 @@ function blockPlates(plates) {
 
   if (permission) {
 
-    plates.find('.block__content > .view > .view-content > .row >.row__item').each(function(){
+    var count = plates.find(item).size()
 
-      $(this).height('auto');
-      
-      if ($(this).height() > elHeight) {
-        elHeight = $(this).height();
-      }
-      if (index == 1) {
-        el = $(this);
-      }
-      else if (index == maxEl) {
-        el = el.add($(this));
-        el.height(elHeight);
-        index = 0;
-        elHeight = 0;
-      }
-      else {
-        el = el.add($(this));       
-      }
+    plates.find(item).each(function(){
 
-      index++;
+      if (!$(this).closest('.node--blank').size()) {
+
+        $(this).height('auto');
+        
+        if ($(this).height() > elHeight) {
+          elHeight = $(this).height();
+        }
+
+        if (index == 1) {
+          el = $(this);
+        }
+        if (index == maxEl || index == count) {
+          el = el.add($(this));
+          el.height(elHeight);
+          index = 0;
+          elHeight = 0;
+        }
+        else {
+          el = el.add($(this));
+        }
+
+        index++;
+      }
 
       
     });
