@@ -6,7 +6,7 @@
 /**
  * Implements theme_pager().
  */
-function mg3_pager($vars) {
+function default_drupal_theme_pager($vars) {
   $tags = $vars['tags'];
   $element = $vars['element'];
   $parameters = $vars['parameters'];
@@ -120,7 +120,7 @@ function mg3_pager($vars) {
 /**
  * Implements theme_pager().
  */
-function mg3_pager_link($vars) {
+function default_drupal_theme_pager_link($vars) {
   $text = $vars['text'];
   $page_new = $vars['page_new'];
   $element = $vars['element'];
@@ -173,7 +173,7 @@ function mg3_pager_link($vars) {
  *  function theme_form_element_label
  */
 
-function mg3_form_element_label($vars) {
+function default_drupal_theme_form_element_label($vars) {
   $element = $vars['element'];
   // This is also used in the installer, pre-database setup.
   $t = get_t();
@@ -188,7 +188,7 @@ function mg3_form_element_label($vars) {
 
   $title = filter_xss_admin($element['#title']);
 
-  $attributes = array();
+  $attributes = $element['#wrapper_attributes'];
   // Style the label as class option to display inline with the element.
   if ($element['#title_display'] == 'after') {
     $attributes['class'] = 'option';
@@ -257,7 +257,7 @@ function mg3_form_element_label($vars) {
  *  function theme_container
  */
 
-function mg3_container($vars) {
+function default_drupal_theme_container($vars) {
   $element = $vars['element'];
   // print '<!-- '; print_r($element); print ' -->';
   // Ensure #attributes is set.
@@ -285,7 +285,7 @@ function mg3_container($vars) {
  *  function theme_form_element
  */
 
-function mg3_form_element($vars) {
+function default_drupal_theme_form_element($vars) {
   $element = &$vars['element'];
 
   // This function is invoked as theme wrapper, but the rendered form element
@@ -385,7 +385,7 @@ function mg3_form_element($vars) {
   return $output;
 }
 
-function mg3_webform_element($vars) {
+function default_drupal_theme_webform_element($vars) {
   // Ensure defaults.
   $vars['element'] += array(
     '#title_display' => 'before',
@@ -485,7 +485,7 @@ function mg3_webform_element($vars) {
 /**
  * Override of theme_breadcrumb().
  */
-function mg3_breadcrumb($variables) {
+function default_drupal_theme_breadcrumb($variables) {
   $breadcrumb = $variables['breadcrumb'];
 
   if (!empty($breadcrumb)) {
