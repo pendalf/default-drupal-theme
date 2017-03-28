@@ -333,12 +333,17 @@ function default_drupal_theme_preprocess_views_view_unformatted(&$vars) {
   $style   = $view->style_plugin;
   $options = $style->options;
 
-  $row_extra_classes = array(
+  $row_extra = array(
 
-    // '3v_front_main_news' => array(
+    // 'configurator' => array(
 
-    //   'block_2' => array('row__item', 'row__width-4', 'row__md-width-6', 'row__mb-width-12'),
-    //   'block_3' => array('row__item', 'row__width-4', 'row__md-width-6', 'row__mb-width-12')
+    //   'default' => array(
+
+    //     'extra_class' => array('row-gr__item', 'row-gr__width-4', 'row-gr__md-width-6', 'row-gr__mb-width-12'),
+    //     'prefix' => '<div class="configurator__item">',
+    //     'suffix' => '</div>',
+    //   ),
+
     // ),
   );
 
@@ -372,15 +377,21 @@ function default_drupal_theme_preprocess_views_view_unformatted(&$vars) {
     // Flatten the classes to a string for each row for the template file.
     $vars['classes_array'][$id] = isset($vars['classes'][$id]) ? implode(' ', $vars['classes'][$id]) : '';
 
-    if (in_array($name, array_keys($row_extra_classes)) && in_array($display, array_keys($row_extra_classes[$name]))) {
+    if (in_array($name, array_keys($row_extra)) && in_array($display, array_keys($row_extra[$name]))) {
 
-      $vars['classes_array'][$id] .= ' ' . implode(' ', $row_extra_classes[$name][$display]);
+      $row_extra_display = $row_extra[$name][$display];
+
+      $vars['classes_array'][$id] .= ' ' . implode(' ', $row_extra_display['extra_class']);
+      if (isset($row_extra_display['prefix'])) {
+        $vars['rows'][$id] = $row_extra_display['prefix'] . $vars['rows'][$id];
+      }
+      if (isset($row_extra_display['suffix'])) {
+        $vars['rows'][$id] .= $row_extra_display['suffix'];
+      }
     }
   }
-  //print '<!-- '; print $display; print ' -->' . "\n";
-  //foreach ($vars as $key => $value) {
-      //   print '<!-- ';print $key;print ' -->' . "\n";
-      // }
+  // $vars['row'] = 'test';
+  // print_r($rows);
 }
 
 
