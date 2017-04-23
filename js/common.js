@@ -33,7 +33,7 @@ jQuery(document).ready(function($) {
 
   $('.node .field-name-quick-order-form h2.block-title').wrap('<div class="block__title"></div>');
 
-  $('.forms_css [type="radio"], .forms_css [type="checkbox"]').forms();
+  // $('.forms_css [type="radio"], .forms_css [type="checkbox"]').forms();
   $('.form-radios .multichoice_row').click(function(){
     $(this).find('[type="radio"]:checked').trigger('change');
   });
@@ -91,28 +91,28 @@ jQuery(document).ready(function($) {
       slidebarHeight()
     });
 
-    $('.slidebar__content').each(function(){
-      $(this).jScrollPane({
+    // $('.slidebar__content').each(function(){
+    //   $(this).jScrollPane({
 
-        scrollbarWidth:4, showArrows:false, contentWidth: '0px', mouseWheelSpeed: 50
-      });
-      var api = $(this).data('jsp');
-      var throttleTimeout;
-      $(window).bind(
-        'resize scroll',
-        function(){
-          if (!throttleTimeout) {
-            throttleTimeout = setTimeout(
-              function(){
-                api.reinitialise();
-                throttleTimeout = null;
-              }, 
-              50
-            );
-          }
-        }
-      );
-    });
+    //     scrollbarWidth:4, showArrows:false, contentWidth: '0px', mouseWheelSpeed: 50
+    //   });
+    //   var api = $(this).data('jsp');
+    //   var throttleTimeout;
+    //   $(window).bind(
+    //     'resize scroll',
+    //     function(){
+    //       if (!throttleTimeout) {
+    //         throttleTimeout = setTimeout(
+    //           function(){
+    //             api.reinitialise();
+    //             throttleTimeout = null;
+    //           }, 
+    //           50
+    //         );
+    //       }
+    //     }
+    //   );
+    // });
   }
 
   function slidebarHeight(){
