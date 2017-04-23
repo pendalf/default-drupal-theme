@@ -209,7 +209,7 @@ jQuery(document).ready(function($) {
     windowResize();
   }, 100);
 
-  $('.block-main-today .view-content').jScrollPane({scrollbarWidth:10, showArrows:false, contentWidth: '0px', mouseWheelSpeed: 50});
+  // $('.block-main-today .view-content').jScrollPane({scrollbarWidth:10, showArrows:false, contentWidth: '0px', mouseWheelSpeed: 50});
   //alert(1)
 
   $(window).on('resize', windowResize);
