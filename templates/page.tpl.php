@@ -213,4 +213,4 @@
 
 <?php if ($page['end_page']): ?><div class="end_page"><?php print render($page['end_page']); ?></div><?php endif; ?>
 
-<a href="#" id="up" class="k2t-btt"><i class="fa fa-angle-up"></i></a>
+<a href="#" id="up" class="k2t-btt"></a>
