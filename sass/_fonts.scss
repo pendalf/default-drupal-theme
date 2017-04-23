@@ -24,14 +24,9 @@
 // }
 
 
-@font-face {
- 
-	@include font-face('Awesome', './fonts/Awesome/fontawesome-webfont');
-}
-@font-face {
+@include font-face('Awesome', './fonts/Awesome/fontawesome-webfont');
 
-	@include font-face('Icons', './fonts/icomoon/icomoon');
-}
+@include font-face('Icons', './fonts/icomoon/icomoon');
 
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i&subset=cyrillic');
 @import url('http://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic');

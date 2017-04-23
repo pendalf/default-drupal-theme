@@ -30,13 +30,13 @@ var runTimestamp = Math.round(Date.now()/1000);
 gulp.task('Iconfont', function(){
   return gulp.src([fontGlyfs])
 
-    // .pipe(iconfontCss({
-    //   fontName: fontName,
-    //   path: './sass/templates/_icons.scss',
-    //   targetPath: '../../sass/_icons.scss',
-    //   fontPath: 'fonts/icomoon',
-    //   cssClass: 'icons-fonts'
-    // }))
+    .pipe(iconfontCss({
+      fontName: fontName,
+      path: './sass/templates/_icons.scss',
+      targetPath: '../../sass/_icons.scss',
+      fontPath: 'fonts/icomoon',
+      cssClass: 'icons-fonts'
+    }))
 
     .pipe(iconfont({
       fontName: 'icomoon', // required 
@@ -54,30 +54,7 @@ gulp.task('Iconfont', function(){
     .pipe(gulp.dest('fonts/icomoon'));
 });
 
-gulp.task('IconfontCss', ['Iconfont'], function(){
-  return gulp.src([fontGlyfs])
-
-    .pipe(iconfontCss({
-      fontName: fontName,
-      path: './sass/templates/_icons.scss',
-      targetPath: '../../sass/_icons.scss',
-      fontPath: 'fonts/icomoon',
-      cssClass: 'icons-fonts'
-    }))
-    .pipe(iconfont({
-      fontName: 'icomoon', // required 
-      prependUnicode: true, // recommended option 
-      formats: ['ttf', 'eot', 'svg', 'woff', 'woff2'], // default, 'woff2' and 'svg' are available 
-      timestamp: runTimestamp, // recommended to get consistent builds when watching files 
-      centerHorizontally: true,
-      // fixedWidth: true,
-      normalize: true,
-    }))
-    .pipe(gulp.dest('fonts/icomoon'));
-    
-});
-
-gulp.task('glyfs', ['Iconfont', 'IconfontCss']);
+gulp.task('glyfs', ['Iconfont']);
 
 
 gulp.task('sass', function () {

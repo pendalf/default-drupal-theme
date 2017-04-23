@@ -1,20 +1,16 @@
 /* Mixins */
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i&subset=cyrillic");
 @import url("http://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic");
-@font-face {
-  font-family: "Awesome";
-  src: url("./fonts/Awesome/fontawesome-webfont.eot");
-  src:  url("./fonts/Awesome/fontawesome-webfont.eot?#iefix") format("embedded-opentype"), url("./fonts/Awesome/fontawesome-webfont.woff") format("woff"), url("./fonts/Awesome/fontawesome-webfont.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal; }
-
-@font-face {
-  font-family: "Icons";
-  src: url("./fonts/icomoon/icomoon.eot");
-  src:  url("./fonts/icomoon/icomoon.eot?#iefix") format("embedded-opentype"), url("./fonts/icomoon/icomoon.woff") format("woff"), url("./fonts/icomoon/icomoon.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal; }
-
+font-family: "Awesome";
+src: url("./fonts/Awesome/fontawesome-webfont.eot");
+src:  url("./fonts/Awesome/fontawesome-webfont.eot?#iefix") format("embedded-opentype"), url("./fonts/Awesome/fontawesome-webfont.woff") format("woff"), url("./fonts/Awesome/fontawesome-webfont.ttf") format("truetype");
+font-weight: normal;
+font-style: normal;
+font-family: "Icons";
+src: url("./fonts/icomoon/icomoon.eot");
+src:  url("./fonts/icomoon/icomoon.eot?#iefix") format("embedded-opentype"), url("./fonts/icomoon/icomoon.woff") format("woff"), url("./fonts/icomoon/icomoon.ttf") format("truetype");
+font-weight: normal;
+font-style: normal;
 .icon--angle-up2:before, .icon--24:before, .icon--attention:before, .icon--check:before, .check_checkbox:after, .icon--search:before, .icon--telegram:before, .icon--arrow-left:before, .item-list .pager li.pager-previous span:before, .icon--arrow-right:before, .item-list .pager li.pager-next span:after, .icon--burger:before, .icon--vk:before, .icon--facebook:before, .icon--instagram:before {
   font-family: "Icons";
   -webkit-font-smoothing: antialiased;
@@ -26,40 +22,40 @@
   text-transform: none; }
 
 .icon--angle-up2:before {
-  content: "\uE90D"; }
+  content: "\E90D"; }
 
 .icon--24:before {
-  content: "\uEA01"; }
+  content: "\EA01"; }
 
 .icon--attention:before {
-  content: "\uEA02"; }
+  content: "\EA02"; }
 
 .icon--check:before, .check_checkbox:after {
-  content: "\uEA03"; }
+  content: "\EA03"; }
 
 .icon--search:before {
-  content: "\uEA04"; }
+  content: "\EA04"; }
 
 .icon--telegram:before {
-  content: "\uEA05"; }
+  content: "\EA05"; }
 
 .icon--arrow-left:before, .item-list .pager li.pager-previous span:before {
-  content: "\uEA06"; }
+  content: "\EA06"; }
 
 .icon--arrow-right:before, .item-list .pager li.pager-next span:after {
-  content: "\uEA07"; }
+  content: "\EA07"; }
 
 .icon--burger:before {
-  content: "\uEA08"; }
+  content: "\EA08"; }
 
 .icon--vk:before {
-  content: "\uEA09"; }
+  content: "\EA09"; }
 
 .icon--facebook:before {
-  content: "\uEA10"; }
+  content: "\EA10"; }
 
 .icon--instagram:before {
-  content: "\uEA11"; }
+  content: "\EA11"; }
 
 .icon {
   font-style: normal; }
