@@ -1,0 +1,36 @@
+@mixin <%= cssClass%>-styles {
+	font-family: "<%= fontName %>";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	// speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+	text-decoration: none;
+	text-transform: none;
+}
+
+%<%= cssClass%> {
+	@include <%= cssClass%>-styles;
+}
+
+<% _.each(glyphs, function(glyph) { %>%<%= glyph.fileName %> { content: "\<%= glyph.codePoint %>";
+
+	@extend %<%= cssClass%>;
+}
+<% }); %>
+
+[class^="icon-"] {
+
+  &:before {}
+}
+.icon { font-style: normal;
+	<% _.each(glyphs, function(glyph) { %>&--<%= glyph.fileName %> { 
+
+		&:before {
+
+	      @extend %<%= glyph.fileName %>;
+	    }
+	}
+	<% }); %>
+}

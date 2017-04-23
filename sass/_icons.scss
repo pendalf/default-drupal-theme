@@ -1,0 +1,157 @@
+@mixin icons-fonts-styles {
+	font-family: "Icons";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	// speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+	text-decoration: none;
+	text-transform: none;
+}
+
+%icons-fonts {
+	@include icons-fonts-styles;
+}
+
+%angle-up2 { content: "\uE90D";
+
+	@extend %icons-fonts;
+}
+%24 { content: "\uEA01";
+
+	@extend %icons-fonts;
+}
+%attention { content: "\uEA02";
+
+	@extend %icons-fonts;
+}
+%check { content: "\uEA03";
+
+	@extend %icons-fonts;
+}
+%search { content: "\uEA04";
+
+	@extend %icons-fonts;
+}
+%telegram { content: "\uEA05";
+
+	@extend %icons-fonts;
+}
+%arrow-left { content: "\uEA06";
+
+	@extend %icons-fonts;
+}
+%arrow-right { content: "\uEA07";
+
+	@extend %icons-fonts;
+}
+%burger { content: "\uEA08";
+
+	@extend %icons-fonts;
+}
+%vk { content: "\uEA09";
+
+	@extend %icons-fonts;
+}
+%facebook { content: "\uEA10";
+
+	@extend %icons-fonts;
+}
+%instagram { content: "\uEA11";
+
+	@extend %icons-fonts;
+}
+
+
+[class^="icon-"] {
+
+  &:before {}
+}
+.icon { font-style: normal;
+	&--angle-up2 { 
+
+		&:before {
+
+	      @extend %angle-up2;
+	    }
+	}
+	&--24 { 
+
+		&:before {
+
+	      @extend %24;
+	    }
+	}
+	&--attention { 
+
+		&:before {
+
+	      @extend %attention;
+	    }
+	}
+	&--check { 
+
+		&:before {
+
+	      @extend %check;
+	    }
+	}
+	&--search { 
+
+		&:before {
+
+	      @extend %search;
+	    }
+	}
+	&--telegram { 
+
+		&:before {
+
+	      @extend %telegram;
+	    }
+	}
+	&--arrow-left { 
+
+		&:before {
+
+	      @extend %arrow-left;
+	    }
+	}
+	&--arrow-right { 
+
+		&:before {
+
+	      @extend %arrow-right;
+	    }
+	}
+	&--burger { 
+
+		&:before {
+
+	      @extend %burger;
+	    }
+	}
+	&--vk { 
+
+		&:before {
+
+	      @extend %vk;
+	    }
+	}
+	&--facebook { 
+
+		&:before {
+
+	      @extend %facebook;
+	    }
+	}
+	&--instagram { 
+
+		&:before {
+
+	      @extend %instagram;
+	    }
+	}
+	
+}

@@ -19,6 +19,7 @@
   "devDependencies": {
     "gulp-group-css-media-queries": "^1.2.0",
     "gulp-iconfont": "^8.0.1",
+    "gulp-iconfont-css": "git://github.com/pendalf/gulp-iconfont-css.git#master",
     "node-bourbon": "^4.2.8"
   }
 }

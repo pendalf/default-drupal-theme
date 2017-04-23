@@ -15,6 +15,55 @@
   font-weight: normal;
   font-style: normal; }
 
+.icon--angle-up2:before, .icon--24:before, .icon--attention:before, .icon--check:before, .check_checkbox:after, .icon--search:before, .icon--telegram:before, .icon--arrow-left:before, .item-list .pager li.pager-previous span:before, .icon--arrow-right:before, .item-list .pager li.pager-next span:after, .icon--burger:before, .icon--vk:before, .icon--facebook:before, .icon--instagram:before {
+  font-family: "Icons";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  text-decoration: none;
+  text-transform: none; }
+
+.icon--angle-up2:before {
+  content: "\uE90D"; }
+
+.icon--24:before {
+  content: "\uEA01"; }
+
+.icon--attention:before {
+  content: "\uEA02"; }
+
+.icon--check:before, .check_checkbox:after {
+  content: "\uEA03"; }
+
+.icon--search:before {
+  content: "\uEA04"; }
+
+.icon--telegram:before {
+  content: "\uEA05"; }
+
+.icon--arrow-left:before, .item-list .pager li.pager-previous span:before {
+  content: "\uEA06"; }
+
+.icon--arrow-right:before, .item-list .pager li.pager-next span:after {
+  content: "\uEA07"; }
+
+.icon--burger:before {
+  content: "\uEA08"; }
+
+.icon--vk:before {
+  content: "\uEA09"; }
+
+.icon--facebook:before {
+  content: "\uEA10"; }
+
+.icon--instagram:before {
+  content: "\uEA11"; }
+
+.icon {
+  font-style: normal; }
+
 /* Vars */
 /* Defaults */
 form .form-submit, .block-search-form-hover .form-submit, .btn,
@@ -237,45 +286,6 @@ form .form-submit, .block-search-form-hover .form-submit {
   .pager-load-more a:hover {
     color: #fff;
     background-color: #2f55a5; }
-
-.icon--24:before, .icon--attention:before, .icon--check:before, .check_checkbox:after, .icon--search:before, .icon--telegram:before, .icon--arrow-left:before, .item-list .pager li.pager-previous span:before, .icon--arrow-right:before, .item-list .pager li.pager-next span:after, .icon--burger:before, .icon--vk:before, .icon--fb:before, .icon--in:before {
-  font-family: "Icons"; }
-
-.icon--24:before {
-  content: "\ea01"; }
-
-.icon--attention:before {
-  content: "\ea02"; }
-
-.icon--check:before, .check_checkbox:after {
-  content: "\ea03"; }
-
-.icon--search:before {
-  content: "\ea04"; }
-
-.icon--telegram:before {
-  content: "\ea05"; }
-
-.icon--arrow-left:before, .item-list .pager li.pager-previous span:before {
-  content: "\ea06"; }
-
-.icon--arrow-right:before, .item-list .pager li.pager-next span:after {
-  content: "\ea07"; }
-
-.icon--burger:before {
-  content: "\ea08"; }
-
-.icon--vk:before {
-  content: "\ea09"; }
-
-.icon--fb:before {
-  content: "\ea10"; }
-
-.icon--in:before {
-  content: "\ea11"; }
-
-.icon {
-  font-style: normal; }
 
 body.body_bgr {
   margin: 0;

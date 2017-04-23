@@ -8,7 +8,11 @@ var sassGlob = require('gulp-sass-glob');
 var browserSync = require('browser-sync').create();
 var bourbon = require('node-bourbon').includePaths;
 var iconfont = require('gulp-iconfont');
+var iconfontCss = require('gulp-iconfont-css');
 var gcmq = require('gulp-group-css-media-queries');
+
+var fontName  = 'Icons';
+var fontGlyfs = 'img/glyfs/*.svg';
  
 gulp.task('serve', ['sass', 'sass:ckeditor'], function() {
 
@@ -24,7 +28,16 @@ gulp.task('serve', ['sass', 'sass:ckeditor'], function() {
 var runTimestamp = Math.round(Date.now()/1000);
  
 gulp.task('Iconfont', function(){
-  return gulp.src(['img/glyfs/*.svg'])
+  return gulp.src([fontGlyfs])
+
+    // .pipe(iconfontCss({
+    //   fontName: fontName,
+    //   path: './sass/templates/_icons.scss',
+    //   targetPath: '../../sass/_icons.scss',
+    //   fontPath: 'fonts/icomoon',
+    //   cssClass: 'icons-fonts'
+    // }))
+
     .pipe(iconfont({
       fontName: 'icomoon', // required 
       prependUnicode: true, // recommended option 
@@ -34,12 +47,38 @@ gulp.task('Iconfont', function(){
       // fixedWidth: true,
       normalize: true,
     }))
-      .on('glyphs', function(glyphs, options) {
-        // CSS templating, e.g. 
-        console.log(glyphs, options);
-      })
+    .on('glyphs', function(glyphs, options) {
+      // CSS templating, e.g. 
+      console.log(glyphs, options);
+    })
     .pipe(gulp.dest('fonts/icomoon'));
 });
+
+gulp.task('IconfontCss', ['Iconfont'], function(){
+  return gulp.src([fontGlyfs])
+
+    .pipe(iconfontCss({
+      fontName: fontName,
+      path: './sass/templates/_icons.scss',
+      targetPath: '../../sass/_icons.scss',
+      fontPath: 'fonts/icomoon',
+      cssClass: 'icons-fonts'
+    }))
+    .pipe(iconfont({
+      fontName: 'icomoon', // required 
+      prependUnicode: true, // recommended option 
+      formats: ['ttf', 'eot', 'svg', 'woff', 'woff2'], // default, 'woff2' and 'svg' are available 
+      timestamp: runTimestamp, // recommended to get consistent builds when watching files 
+      centerHorizontally: true,
+      // fixedWidth: true,
+      normalize: true,
+    }))
+    .pipe(gulp.dest('fonts/icomoon'));
+    
+});
+
+gulp.task('glyfs', ['Iconfont', 'IconfontCss']);
+
 
 gulp.task('sass', function () {
   return gulp.src('./sass/*.scss')
