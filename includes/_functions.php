@@ -188,7 +188,7 @@ function default_drupal_theme_form_element_label($vars) {
 
   $title = filter_xss_admin($element['#title']);
 
-  $attributes = $element['#wrapper_attributes'];
+  $wrapper_attributes = isset($element['#wrapper_attributes']) ? $element['#wrapper_attributes'] : array('class' => array());
   // Style the label as class option to display inline with the element.
   if ($element['#title_display'] == 'after') {
     $attributes['class'] = 'option';
