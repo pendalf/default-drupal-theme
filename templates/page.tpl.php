@@ -95,7 +95,7 @@
     <div class="section__inner clearfix">
       <?php if ($logo): ?>
         <div id="logo_inner">
-          <a href="" title="<?php print t('Home'); ?>" rel="home" id="logo">
+          <a href="/" title="<?php print t('Home'); ?>" rel="home" id="logo">
             <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
             <span>Текст под логотипом</span>
           </a>

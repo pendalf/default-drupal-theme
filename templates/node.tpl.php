@@ -21,8 +21,7 @@ $is_admin = ($user->uid == 1);
   <?php endif; ?>
 
   <div class="content clearfix"<?php print $content_attributes; ?>>
-    <?php $no_created = array('region','authors','pro','webform'); ?>
-    <?php if (!in_array($node->type, $no_created)) : ?>
+    <?php if ($display_submitted) : ?>
       <div class="node__date"><?php print format_date($node->created, 'custom', 'l, j F, Y - H:i'); ?></div>
     <?php endif; ?>
 
@@ -31,9 +30,9 @@ $is_admin = ($user->uid == 1);
     ?>
 
   <?php
-   if (in_array($node->type, array('quiz','authors'))) {
-     print $socials_share;
-   }
+   // if (in_array($node->type, array('quiz','authors'))) {
+   //   print $socials_share;
+   // }
   ?>
 
   </div>
