@@ -92,7 +92,7 @@
   column-rule: $var;
 }
 
-@mixin respond-to($media) {
+@mixin respond-to($media, $min: false) {
   @if $media == handhelds {
     @media only screen and (max-width: $small) { @content; }
   }
@@ -101,6 +101,12 @@
   }
   @else if $media == wide-screens {
     @media only screen and (min-width: $large) { @content; }
+  }
+  @else if $min == true {
+    @media only screen and (min-width: $media) { @content; }
+  }
+  @else {
+    @media only screen and (max-width: $media) { @content; }
   }
 }
 
