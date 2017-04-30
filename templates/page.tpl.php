@@ -116,16 +116,21 @@
 
     <section id="main-region"<?php print $main_class;?>>
       <div class="section__inner clearfix">
+        <?php if ($breadcrumb): ?>
+          <div id="breadcrumb" class="breadcrumb"><?php print $breadcrumb; ?></div>
+        <?php endif; ?>
+
+        <?php if ($page['sidebar_first'] || $page['sidebar_second']): ?>
 
         <div id="col_center_left_wrap">
-         <div id="col_center_left_wrap_inner">
+         <div id="col_center_left_wrap_inner" class="clearfix">
           <div id="col_center">
            <div id="col_center_inner">
+
+        <?php endif; ?>
             <div class="content_wrapper"><div class="content_wrapper_inner">
 
-              <?php if ($breadcrumb): ?>
-                <div id="breadcrumb" class="breadcrumb"><?php print $breadcrumb; ?></div>
-              <?php endif; ?>
+              
               <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
               <a id="main-content"></a>
               <?php if ($messages): ?><div id="messages"><div class="section clearfix"><?php print $messages; ?></div></div> <!-- /.section, /#messages --><?php endif; ?>
@@ -154,14 +159,16 @@
               <?php print render($page['content']); ?>
               <?php print $feed_icons; ?>
             </div></div>
+
+        <?php if ($page['sidebar_first'] || $page['sidebar_second']): ?>
            </div>
           </div><!-- /#col_center -->
           <?php if (isset($page['sidebar_first']) && $page['sidebar_first']) { print '<div id="sidebar-first" class="column sidebar"><div class="section">'.render($page['sidebar_first']).'</div></div> <!-- /.section, /#sidebar-first -->';} ?>
-          <div class="clear"></div>
          </div>
         </div><!-- /#col_center_left_wrap -->
 
         <?php if (isset($page['sidebar_second']) && $page['sidebar_second']) { print '<div id="sidebar-second" class="column sidebar"><div class="section">'.render($page['sidebar_second']).'</div></div> <!-- /.section, /#sidebar-second -->';} ?>
+        <?php endif; ?>
 
       </div>
     </section> <!-- /#main-region -->
