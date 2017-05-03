@@ -311,7 +311,7 @@ function default_drupal_theme_form_element($vars) {
     $attributes['class'][] = 'form-disabled';
   }
   
-  if ($element['#type'] == 'checkbox' && strpos($element['#children'], ' error') !== false) {
+  if (!empty($element['#type']) && $element['#type'] == 'checkbox' && strpos($element['#children'], ' error') !== false) {
     $attributes['class'][] = 'row has-error';
   }
   $output = '<div' . drupal_attributes($attributes) . '>' . "\n";
