@@ -78,7 +78,7 @@ gulp.task('sass:watch', function () {
 gulp.task('gcmq', ['sass'], function () {
   return gulp.src('./css/*.css')
         .pipe(gcmq())
-        .pipe(gulp.dest('/.css'));
+        .pipe(gulp.dest('css'));
 });
 
  
