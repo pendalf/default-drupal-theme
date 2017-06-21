@@ -1,20 +1,20 @@
 
   /* Mixins */
 
-@mixin font-face($fontFamily, $fontpath, $fontWeight: normal, $fontStyle: normal, $local: '') {
-  @if $local != '' {
-    $local: 'local("' + $local;
-    $local: $local + '"),';
-  }
-  font-family: $fontFamily;
-  src: url( $fontpath + '.eot');
-  src: unquote($local)
-       url( $fontpath + '.eot?#iefix') format('embedded-opentype'),
-       url( $fontpath + '.woff') format('woff'),
-       url( $fontpath + '.ttf') format('truetype');
-  font-weight: $fontWeight;
-  font-style: $fontStyle;
-}
+// @mixin font-face($fontFamily, $fontpath, $fontWeight: normal, $fontStyle: normal, $local: '') {
+//   @if $local != '' {
+//     $local: 'local("' + $local;
+//     $local: $local + '"),';
+//   }
+//   font-family: $fontFamily;
+//   src: url( $fontpath + '.eot');
+//   src: unquote($local)
+//        url( $fontpath + '.eot?#iefix') format('embedded-opentype'),
+//        url( $fontpath + '.woff') format('woff'),
+//        url( $fontpath + '.ttf') format('truetype');
+//   font-weight: $fontWeight;
+//   font-style: $fontStyle;
+// }
 
 @mixin box-sizing($box-sizing){
   -webkit-box-sizing: $box-sizing;

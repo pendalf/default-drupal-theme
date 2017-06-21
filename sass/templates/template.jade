@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+    head
+        // you may want to add a link to your compiled `css` file for a nicer display
+        link(rel="stylesheet" media="all" href="../../../css/style.css")
+    body
+        style
+            | [class^="icon-"]:before { font-size: 24px; display: block}
+            | ul {
+            |   -webkit-column-count:4;
+            |   -moz-column-count:4;
+            |   column-count:4;
+            | }
+            | ul li { padding-top: 5px; padding-bottom: 5px; border-bottom: 1px solid #000;}
+        ul
+            for ic in icons
+                li
+                    i(class='icon--'+ic)
+                        |.
+                        = 'icon--'+ic 
+                        br
+                        = '%'+ic

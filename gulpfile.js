@@ -10,6 +10,8 @@ var bourbon = require('node-bourbon').includePaths;
 var iconfont = require('gulp-iconfont');
 var iconfontCss = require('gulp-iconfont-css');
 var gcmq = require('gulp-group-css-media-queries');
+var jade = require('gulp-jade');
+var fs   = require('fs');
 
 var fontName  = 'Icons';
 var fontGlyfs = 'img/glyfs/*.svg';
@@ -54,8 +56,34 @@ gulp.task('Iconfont', function(){
     .pipe(gulp.dest('fonts/icomoon'));
 });
 
-gulp.task('glyfs', ['Iconfont']);
 
+gulp.task('iconHtml', ['Iconfont'], function () {
+    var re = new RegExp(/&--([^ ]*)/);
+
+    fs.readFile('./sass/_icons.scss', 'utf8', function(err, data) {
+        var icons = []
+        if(err)
+            return console.log(err);
+        data.split('\r\n').forEach(function(icon) {
+            var match = re.exec(icon);
+            if(match)
+                icons.push(match[1])
+        })
+        // the gulp-jade plugin expects template local data to be an object
+        // such as:
+        // {locals: YOUR_DATA_OBJECT_TO_BIND}
+        bind({locals: {icons: icons}})
+    });
+
+    // method that will bind data to your template
+    var bind = function(data) {     
+        gulp.src('./sass/templates/template.jade')
+            .pipe(jade(data))
+            .pipe(gulp.dest('./sass/templates/icons/'))
+    }
+});
+
+gulp.task('glyfs', ['Iconfont', 'iconHtml']);
 
 gulp.task('sass', function () {
   return gulp.src('./sass/*.scss')
