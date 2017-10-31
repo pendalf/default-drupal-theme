@@ -29,109 +29,18 @@ html {min-height: 100%; height: 100%;}
 
 
   /* Sidebars */
-$dim: 100%;
-
-$sidebarWidthFirst:      382;
-$sidebarPadFirst:        28;
-
-$sidebarWidthSecond:     382;
-$sidebarPadSecond:       28;
-
-$marginNegativeSecond:   0;
-$marginPositiveSecond:   0;
-$marginNegativeFirstWS:  0;
-$marginNegativeFirst:    0;
-$marginPositiveFirstWS:  0;
-$marginPositiveFirst:    0;
-$sidebarWidthDimFirst:   0;
-$sidebarWidthDimSecond:  0;
-$sidebarWidthDimFirstWS: 0; 
-
-@if $dim != 100% { 
-
-  $marginNegativeFirst:  -($sidebarWidthFirst + $sidebarPadFirst)*$dim;
-  $marginPositiveFirst:  ($sidebarWidthFirst + $sidebarPadFirst)*$dim;
-  $sidebarWidthDimFirst: $sidebarWidthFirst*$dim;
-
-  $marginNegativeSecond:  -($sidebarWidthSecond + $sidebarPadSecond)*$dim;
-  $marginPositiveSecond:  ($sidebarWidthSecond + $sidebarPadSecond)*$dim;
-  $sidebarWidthDimSecond: $sidebarWidthSecond*$dim;
-
-} @else {
 
 
+$siteCols: (
+  firstWidth:  315,
+  firstPad:    35,
+  secondWidth: 315,
+  secondPad:   35,
+  baseWidth:   1070
+);
 
-  $factor: $dim / $baseWidth;
+@include siteCols-builder($siteCols, 750px);
 
-  $marginNegativeSP: $sidebarWidthSecond + $sidebarPadSecond;
-
-  $marginNegativeSecond:  -$marginNegativeSP*$factor;
-  $marginPositiveSecond:  $marginNegativeSP*$factor;
-  $sidebarWidthDimSecond: $sidebarWidthSecond*$factor;
-
-
-  //$marginNegativeFP: $sidebarWiFirst + $sidebarFirst;
-
-
-  $marginNegativeFirst:  -$marginNegativeSP*$factor;
-  $marginPositiveFirst:  $marginNegativeSP*$factor;
-  $sidebarWidthDimFirst: $sidebarWidthSecond*$factor;
-
-  $factor: $dim / ($baseWidth - $marginNegativeSP);
-
-  $marginNegativeFirstWS:  -($sidebarWidthFirst + $sidebarPadFirst)*$factor;
-  $marginPositiveFirstWS:  ($sidebarWidthFirst + $sidebarPadFirst)*$factor;
-  $sidebarWidthDimFirstWS: $sidebarWidthFirst*$factor;
-
-  // $marginNegativeSecond:  -($sidebarWidthSecond + $sidebarPadSecond)*1px;
-  // $marginPositiveSecond:  ($sidebarWidthSecond + $sidebarPadSecond)*1px;
-  // $sidebarWidthDimSecond: $sidebarWidthSecond*1px;
-}
-
-#col_center_left_wrap { width:100%; position:relative; clear: both;}
-
-.two-sidebars,
-.sidebar-second {
-  #col_center_left_wrap { float: left; margin-right: $marginNegativeSecond;}
-}
-
-.two-sidebars,
-.sidebar-second {
-  #col_center_left_wrap_inner { margin-right: $marginPositiveSecond; overflow: hidden;}
-}
-.sidebar-second #col_center_left_wrap_inner { margin-left: 0;}
-
-
-
-#col_center { width:100%;}
-#col_center_inner { padding-top: 1px;}
-
-.two-sidebars,
-.sidebar-first {
-  #col_center { float: right; margin-left: $marginNegativeFirstWS;}
-}
-
-.sidebar-first {
-  #col_center { float: right; margin-left: $marginNegativeFirst;}
-}
-
-
-.two-sidebars,
-.sidebar-first {
-  #col_center_inner { margin-left: $marginPositiveFirstWS;}
-}
-
-.sidebar-first {
-  #col_center_inner { margin-left: $marginPositiveFirst;}
-}
-.sidebar-first #col_center_inner { margin-right: 0;}
-
-
-#sidebar-first,
-#sidebar-second { width: $sidebarWidthDimFirst; position:relative; padding: 0; float: left; }
-#sidebar-second { float: right; width: $sidebarWidthDimSecond;}
-
-.two-sidebars #sidebar-first { width: $sidebarWidthDimFirstWS;}
 
 #content_bot { clear: both;}
 

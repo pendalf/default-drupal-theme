@@ -143,3 +143,159 @@
     }
   }
 }
+
+
+@mixin siteCols-builder($siteCols, $breackpoint: 0) {
+
+  $dim: 100%;
+  $baseWidthContainer:     $baseWidth;
+
+  // левая колонка
+  $sidebarWidthFirst:      200;
+  $sidebarPadFirst:        30;
+
+  // Правая колонка
+  $sidebarWidthSecond:     200;
+  $sidebarPadSecond:       30;
+  
+
+
+  @if map-has-key($siteCols, firstWidth) {
+    $sidebarWidthFirst: map-get($siteCols, firstWidth);
+  }
+  @if map-has-key($siteCols, secondWidth) {
+    $sidebarWidthSecond: map-get($siteCols, secondWidth);
+  }
+  @if map-has-key($siteCols, firstPad) {
+    $sidebarPadFirst: map-get($siteCols, firstPad);
+  }
+  @if map-has-key($siteCols, secondPad) {
+    $sidebarPadSecond: map-get($siteCols, secondPad);
+  }  
+  @if map-has-key($siteCols, baseWidth) {
+    $baseWidthContainer: map-get($siteCols, baseWidth);
+  }
+
+  $marginNegativeSecond:   0;
+  $marginPositiveSecond:   0;
+  $marginNegativeFirstWS:  0;
+  $marginNegativeFirst:    0;
+  $marginPositiveFirstWS:  0;
+  $marginPositiveFirst:    0;
+  $sidebarWidthDimFirst:   0;
+  $sidebarWidthDimSecond:  0;
+  $sidebarWidthDimFirstWS: 0; 
+
+  @if $dim != 100% { 
+
+    $marginNegativeFirst:  -($sidebarWidthFirst + $sidebarPadFirst)*$dim;
+    $marginPositiveFirst:  ($sidebarWidthFirst + $sidebarPadFirst)*$dim;
+    $sidebarWidthDimFirst: $sidebarWidthFirst*$dim;
+
+    $marginNegativeSecond:  -($sidebarWidthSecond + $sidebarPadSecond)*$dim;
+    $marginPositiveSecond:  ($sidebarWidthSecond + $sidebarPadSecond)*$dim;
+    $sidebarWidthDimSecond: $sidebarWidthSecond*$dim;
+
+  } @else {
+
+
+
+    $factor: $dim / $baseWidthContainer;
+
+    $marginNegativeSP: $sidebarWidthSecond + $sidebarPadSecond;
+
+    $marginNegativeSecond:  -$marginNegativeSP*$factor;
+    $marginPositiveSecond:  $marginNegativeSP*$factor;
+    $sidebarWidthDimSecond: $sidebarWidthSecond*$factor;
+
+
+    $marginNegativeFirst:  -$marginNegativeSP*$factor;
+    $marginPositiveFirst:  $marginNegativeSP*$factor;
+    $sidebarWidthDimFirst: $sidebarWidthSecond*$factor;
+
+    $factor: $dim / ($baseWidthContainer - $marginNegativeSP);
+
+    $marginNegativeFirstWS:  -($sidebarWidthFirst + $sidebarPadFirst)*$factor;
+    $marginPositiveFirstWS:  ($sidebarWidthFirst + $sidebarPadFirst)*$factor;
+    $sidebarWidthDimFirstWS: $sidebarWidthFirst*$factor;
+
+  }
+
+  #col_center_left_wrap { width:100%; position:relative; clear: both;
+
+    .two-sidebars &,
+    .sidebar-second & { float: left; margin-right: $marginNegativeSecond;
+
+      @if $breackpoint != 0 {
+
+        @include respond-to($breackpoint) { float: none; margin-right: 0;}
+      }
+    }
+  }
+
+  #col_center_left_wrap_inner {
+
+    .two-sidebars &,
+    .sidebar-second & { margin-right: $marginPositiveSecond; 
+
+      @if $breackpoint != 0 {
+
+        @include respond-to($breackpoint) { margin-right: 0;}
+      }
+    }
+    .sidebar-second & { margin-left: 0;}
+
+  }
+
+
+
+  #col_center { width:100%;
+
+    .two-sidebars &,
+    .sidebar-first & { float: right; margin-left: $marginNegativeFirstWS;
+
+      @if $breackpoint != 0 {
+
+        @include respond-to($breackpoint) { float: none; margin-left: 0;}
+      }
+    }
+    .sidebar-first & { float: right; margin-left: $marginNegativeFirst;
+
+      @if $breackpoint != 0 {
+
+        @include respond-to($breackpoint) { float: none; margin-left: 0;}
+      }
+    }
+  }
+  #col_center_inner { padding-top: 1px;
+
+    .two-sidebars &,
+    .sidebar-first & { margin-left: $marginPositiveFirstWS;
+
+      @if $breackpoint != 0 {
+
+        @include respond-to($breackpoint) { margin-left: 0;}
+      }
+    }
+    .sidebar-first & { margin-left: $marginPositiveFirst; margin-right: 0;
+
+      // @include respond-to($small) { margin-left: 0;}
+    }
+  }
+
+
+  #sidebar-first,
+  #sidebar-second { width: $sidebarWidthDimFirst; position:relative; float: left; 
+
+    @if $breackpoint != 0 {
+
+      @include respond-to($breackpoint) { width: auto; float: none; }
+    }
+
+    //   @extend %mobile-pad;
+    // }
+  }
+  #sidebar-second { float: right; width: $sidebarWidthDimSecond;}
+
+  .two-sidebars #sidebar-first { width: $sidebarWidthDimFirstWS;}
+}

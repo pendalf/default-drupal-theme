@@ -536,13 +536,12 @@ html {
 .two-sidebars #col_center_left_wrap,
 .sidebar-second #col_center_left_wrap {
   float: left;
-  margin-right: -34.16667%;
+  margin-right: -32.71028%;
 }
 
 .two-sidebars #col_center_left_wrap_inner,
 .sidebar-second #col_center_left_wrap_inner {
-  margin-right: 34.16667%;
-  overflow: hidden;
+  margin-right: 32.71028%;
 }
 
 .sidebar-second #col_center_left_wrap_inner {
@@ -553,49 +552,45 @@ html {
   width: 100%;
 }
 
+.two-sidebars #col_center,
+.sidebar-first #col_center {
+  float: right;
+  margin-left: -48.61111%;
+}
+
+.sidebar-first #col_center {
+  float: right;
+  margin-left: -32.71028%;
+}
+
 #col_center_inner {
   padding-top: 1px;
 }
 
-.two-sidebars #col_center,
-.sidebar-first #col_center {
-  float: right;
-  margin-left: -51.89873%;
-}
-
-.sidebar-first #col_center {
-  float: right;
-  margin-left: -34.16667%;
-}
-
 .two-sidebars #col_center_inner,
 .sidebar-first #col_center_inner {
-  margin-left: 51.89873%;
+  margin-left: 48.61111%;
 }
 
 .sidebar-first #col_center_inner {
-  margin-left: 34.16667%;
-}
-
-.sidebar-first #col_center_inner {
+  margin-left: 32.71028%;
   margin-right: 0;
 }
 
 #sidebar-first,
 #sidebar-second {
-  width: 31.83333%;
+  width: 29.43925%;
   position: relative;
-  padding: 0;
   float: left;
 }
 
 #sidebar-second {
   float: right;
-  width: 31.83333%;
+  width: 29.43925%;
 }
 
 .two-sidebars #sidebar-first {
-  width: 48.35443%;
+  width: 43.75%;
 }
 
 #content_bot {
@@ -2329,6 +2324,41 @@ ul.social li.tel a:before {
 
   .row__md-width-12 {
     width: 97.91667%;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .two-sidebars #col_center_left_wrap,
+  .sidebar-second #col_center_left_wrap {
+    float: none;
+    margin-right: 0;
+  }
+
+  .two-sidebars #col_center_left_wrap_inner,
+  .sidebar-second #col_center_left_wrap_inner {
+    margin-right: 0;
+  }
+
+  .two-sidebars #col_center,
+  .sidebar-first #col_center {
+    float: none;
+    margin-left: 0;
+  }
+
+  .sidebar-first #col_center {
+    float: none;
+    margin-left: 0;
+  }
+
+  .two-sidebars #col_center_inner,
+  .sidebar-first #col_center_inner {
+    margin-left: 0;
+  }
+
+  #sidebar-first,
+  #sidebar-second {
+    width: auto;
+    float: none;
   }
 }
 
