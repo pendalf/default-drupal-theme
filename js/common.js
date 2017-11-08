@@ -383,7 +383,8 @@ function blockPlates(plates, item, elCounts) {
 
   if (permission) {
 
-    var count = plates.find(item).size()
+    var count = plates.find(item).size(),
+        iCount = 1;
 
     plates.find(item).each(function(){
 
@@ -398,7 +399,7 @@ function blockPlates(plates, item, elCounts) {
         if (index == 1) {
           el = $(this);
         }
-        if (index == maxEl || index == count) {
+        if (index == maxEl || index == count || iCount == count) {
           el = el.add($(this));
           el.height(elHeight);
           index = 0;
@@ -409,6 +410,7 @@ function blockPlates(plates, item, elCounts) {
         }
 
         index++;
+        iCount++;
       }
 
       
