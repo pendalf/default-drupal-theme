@@ -133,7 +133,7 @@
   $itemsWrapWidthT: $itemsWrapWidth + $itemsMargin;
   $itemsWidth     : $itemsWrapWidthT / $items;
 
-  #{$el} { padding-top: 6*$crn; padding-bottom: 5*$crn; margin-left: -$itemsMargin / $itemsWrapWidth / 2 * 100%; margin-right: -$itemsMargin / $itemsWrapWidth / 2 * 100%; max-height: none; font-size: $fs14; width: $itemsWidth; overflow: hidden; font-size: 0; max-height: none;
+  #{$el} { padding-top: 6*$crn; padding-bottom: 5*$crn; margin-left: -$itemsMargin / $itemsWrapWidth / 2 * 100%; margin-right: -$itemsMargin / $itemsWrapWidth / 2 * 100%; max-height: none; overflow: hidden; font-size: 0; max-height: none;
 
     #{$el} { padding-top: 0; padding-bottom: 0;}  
 
