@@ -290,15 +290,19 @@
   #sidebar-first,
   #sidebar-second { width: $sidebarWidthDimFirst; position:relative; float: left; 
 
-    @if $breackpoint != 0 {
-
-      @include respond-to($breackpoint) { width: auto; float: none; }
-    }
-
     //   @extend %mobile-pad;
     // }
   }
   #sidebar-second { float: right; width: $sidebarWidthDimSecond;}
 
   .two-sidebars #sidebar-first { width: $sidebarWidthDimFirstWS;}
+
+  #sidebar-first,
+  #sidebar-second {
+
+    @if $breackpoint != 0 {
+
+      @include respond-to($breackpoint) { width: auto; float: none; }
+    }
+  }
 }
